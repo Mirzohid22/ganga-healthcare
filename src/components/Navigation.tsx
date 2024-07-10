@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Image from "next/image";
-// import { useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import NavLink from "./common/NavLink";
 import NavButton from "./common/NavButton";
 import ganga from "../../public/favicon.png";
 import menu from "../../public/menu.svg";
-// import SocialMedias from "./common/SocialMedias";
 
 const Navigation = () => {
-  //   const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const [showMenu, setShowMenu] = useState(false);
   return (
     <header className="w-[85%] flex items-center justify-center">
@@ -23,15 +22,10 @@ const Navigation = () => {
           />
         </a>
         <div className="flex items-center justify-center gap-4">
-          {/* <NavLink href="/" text={t("Navigation.home")} />
-          <NavLink href="/branding" text={t("Navigation.branding")} />
-          <NavLink href="/smm" text={t("Navigation.smm")} />
-          <NavLink href="/digital" text={t("Navigation.digitalMarketing")} />
-          <NavLink href="/contact" text={t("Navigation.contacts")} /> */}
-          <NavLink href="/company" text={"company"} />
-          <NavLink href="/products" text={"products"} />
-          <NavLink href="/news" text={"news"} />
-          <NavLink href="/contact" text={"contacts"} />
+          <NavLink href="/company" text={t("Navigation.company")} />
+          <NavLink href="/products" text={t("Navigation.products")} />
+          <NavLink href="/news" text={t("Navigation.news")} />
+          <NavLink href="/contact" text={t("Navigation.contact")} />
           <NavButton />
         </div>
       </nav>
@@ -67,12 +61,11 @@ const Navigation = () => {
               </button>
             </div>
             <div className="flex flex-col items-start gap-4">
-              <NavLink href="/company" text={"company"} />
-              <NavLink href="/products" text={"products"} />
-              <NavLink href="/news" text={"news"} />
-              <NavLink href="/contact" text={"Navigation.contacts"} />
+              <NavLink href="/company" text={t("Navigation.company")} />
+              <NavLink href="/products" text={t("Navigation.products")} />
+              <NavLink href="/news" text={t("Navigation.news")} />
+              <NavLink href="/contact" text={t("Navigation.contact")} />
             </div>
-            {/* <SocialMedias variant="dark" /> */}
           </div>
         )}
       </nav>

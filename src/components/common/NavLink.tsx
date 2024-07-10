@@ -11,8 +11,8 @@ const NavLink = ({ href, text }: NavLinkProps) => {
 
   return (
     <p
-      className={`font-medium text-sm ${
-        router.pathname === href && "font-bold"
+      className={`text-sm ${
+        router.pathname === href ? "font-bold" : "font-medium"
       }`}
     >
       <Link href={href}>{text}</Link>
