@@ -11,16 +11,16 @@ export default function Home() {
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className}`}
     >
       <Navigation />
-      {/* <div className={`w-screen h-screen flex items-center justify-center ${inter.className}`}>index page</div> */}
+      <div className="w-screen flex items-center justify-center">company page</div>
     </main>
   );
 }
 
 export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common", "footer"])),
-      // Will be passed to the page component as props
-    },
-  };
-}
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, ["common", "footer"])),
+        // Will be passed to the page component as props
+      },
+    };
+  }
