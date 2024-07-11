@@ -4,5 +4,11 @@
         "products": "Продукция",
         "news": "Новости",
         "contact": "Контакты"
+    },
+    "Welcome": {
+        "title": "Отличное Место для Медицинского Ухода",
+        "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
+        "additionalTitle": "Экстренный Случай",
+        "additionalDescription": "Если вам срочно нужен врач вне рабочих часов медицентра, позвоните по номеру экстренной службы для записи на экстренное обслуживание."
     }
 }
