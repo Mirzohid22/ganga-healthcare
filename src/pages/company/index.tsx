@@ -5,7 +5,7 @@ import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Company() {
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className}`}
@@ -19,7 +19,7 @@ export default function Home() {
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
       props: {
-        ...(await serverSideTranslations(locale, ["common", "footer"])),
+        ...(await serverSideTranslations(locale, ["common"])),
         // Will be passed to the page component as props
       },
     };

@@ -5,22 +5,22 @@ import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function News() {
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className}`}
     >
       <Navigation />
-      {/* <div className={`w-screen h-screen flex items-center justify-center ${inter.className}`}>index page</div> */}
+      <div className="w-screen flex items-center justify-center">news page</div>
     </main>
   );
 }
 
 export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-      // Will be passed to the page component as props
-    },
-  };
-}
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, ["common"])),
+        // Will be passed to the page component as props
+      },
+    };
+  }
