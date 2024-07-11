@@ -1,35 +1,31 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import NavLink from "./common/NavLink";
 import NavButton from "./common/NavButton";
 import ganga from "../../public/favicon.png";
-import menu from "../../public/menu.svg";
+// import menu from "../../public/menu.svg";
 
 const Navigation = () => {
   const { t } = useTranslation("common");
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
   return (
     <header className="w-[85%] flex items-center justify-center">
-      <nav className="flex items-center justify-between px-8 max-w-[1196px] w-full min-h-[100px] rounded-[60px] max-lg:hidden">
+      <nav className="flex items-center justify-between max-w-[1196px] w-full min-h-[100px]">
         <a href="./">
-          <Image
-            className="ml-5"
-            src={ganga}
-            alt="Site Logo"
-            width={145}
-            height={60}
-          />
+          <Image src={ganga} alt="Site Logo" width={145} height={60} />
         </a>
-        <div className="flex items-center justify-center gap-4">
-          <NavLink href="/company" text={t("Navigation.company")} />
-          <NavLink href="/products" text={t("Navigation.products")} />
-          <NavLink href="/news" text={t("Navigation.news")} />
-          <NavLink href="/contact" text={t("Navigation.contact")} />
+        <div className="flex items-center justify-center gap-8">
+          <div className="flex items-center justify-center gap-4 max-md:hidden">
+            <NavLink href="/company" text={t("Navigation.company")} />
+            <NavLink href="/products" text={t("Navigation.products")} />
+            <NavLink href="/news" text={t("Navigation.news")} />
+            <NavLink href="/contact" text={t("Navigation.contact")} />
+          </div>
           <NavButton />
         </div>
       </nav>
-      <nav className="lg:hidden w-[90%] flex items-center justify-between z-50">
+      {/* <nav className="lg:hidden w-[90%] flex items-center justify-between z-50">
         <Image src={ganga} alt="Site Logo" width={98} height={34} />
         <button
           onClick={() => setShowMenu(!showMenu)}
@@ -68,7 +64,7 @@ const Navigation = () => {
             </div>
           </div>
         )}
-      </nav>
+      </nav> */}
     </header>
   );
 };

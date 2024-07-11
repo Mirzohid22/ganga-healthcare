@@ -4,5 +4,11 @@
         "products": "Products",
         "news": "News",
         "contact": "Contact"
+    },
+    "Welcome": {
+        "title": "A Great Place \n for Medical Care",
+        "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
+        "additionalTitle": "Emergency Case",
+        "additionalDescription": "If you need a doctor urgently outside of medicenter opening hours, call emergency appointment number for emergency service."
     }
 }

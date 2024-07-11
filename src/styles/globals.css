@@ -7,7 +7,16 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
+   /*colors*/
   --nav-button: #60C1F8;
+  --common-green: #51D0BB;
+  --common-lime: #B1F18A;
+  --common-blue: #ADF2F6;
+  --common-yellow: #FFF494;
+
+  /*metrics*/
+  --max-width: 1196px;
+  --banner-height: 420px;
 }
 
 @media (prefers-color-scheme: dark) {
