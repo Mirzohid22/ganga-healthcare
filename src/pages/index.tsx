@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import Additional from "@/components/common/Additional";
 import Footer from "@/components/Footer";
+import Form from "@/components/Form";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ export default function Home() {
           description={t("Welcome.additionalDescription")}
         />
       </div>
+      <Form />
       <Footer />
       <div className="w-full max-w-[var(--max-width)] flex justify-between font-medium text-[15px] leading-[18.15px] text-[#858585] py-8">
         <p>© Company All Rights Reserved by Romi Agency</p>
