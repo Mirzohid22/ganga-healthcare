@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-   /*colors*/
+  /*colors*/
   --nav-button: #60C1F8;
   --common-green: #51D0BB;
   --common-lime: #B1F18A;
@@ -38,6 +38,44 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+}
+
+.animate-enter {
+  /* animation where element appears from bottom to top  */
+  animation: slide-up 0.5s ease-out;
+  /* display: block; */
+}
+
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-exit {
+  /* animation where element disappears from top to bottom */
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    display: block;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+    display: none;
+  }
 }
 
 @layer utilities {
