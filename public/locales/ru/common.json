@@ -10,5 +10,15 @@
         "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
         "additionalTitle": "Экстренный Случай",
         "additionalDescription": "Если вам срочно нужен врач вне рабочих часов медицентра, позвоните по номеру экстренной службы для записи на экстренное обслуживание."
+    },
+    "Media": {
+        "title": "Как Жить Здоровым Образом Жизни?",
+        "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius dynamicus, qui sequitur mutationem consuetudium lectorum.",
+        "Media": {
+        "additionalGreenTitle": "Разблокируйте свое оздоровительное путешествие",
+        "additionalGreenDescription": "Ваше здоровье, ваш путь. Забронируйте встречу на консультации!",
+        "additionalBlueTitle": "Нужна немедленная помощь?",
+        "additionalBlueDescription": "Мы доступны 24/7. Позвоните сейчас, чтобы получить немедленную помощь!"
+    }
     }
 }

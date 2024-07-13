@@ -4,6 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
+import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,10 @@ export default function News() {
         variant="yellow"
         title={t("Welcome.title")}
         description={t("Welcome.description")}
+      />
+      <MediaBanner
+        title={t("Media.title")}
+        description={t("Media.description")}
       />
       <Form />
       <Footer />

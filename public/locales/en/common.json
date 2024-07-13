@@ -10,5 +10,13 @@
         "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
         "additionalTitle": "Emergency Case",
         "additionalDescription": "If you need a doctor urgently outside of medicenter opening hours, call emergency appointment number for emergency service."
+    },
+    "Media": {
+        "title": "How To Live a Healthy Lifestyle?",
+        "description": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius dynamicus, qui sequitur mutationem consuetudium lectorum.",
+        "additionalGreenTitle": "Unlock Your Wellness Journey",
+        "additionalGreenDescription": "Your Health, Your Way. Secure Your Consultation Appointment!",
+        "additionalBlueTitle": "Need Immediate Care?",
+        "additionalBlueDescription": "We are available 24/7. Call Now for Immediate Assistance!"
     }
 }
