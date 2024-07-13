@@ -5,8 +5,10 @@ import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import Additional from "@/components/common/Additional";
+import MediaBanner from "@/components/common/MediaBanner";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
+import MediaAdditional from "@/components/common/MediaAdditional";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +45,25 @@ export default function Home() {
           description={t("Welcome.additionalDescription")}
         />
       </div>
+      <div className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-between gap-9">
+        <MediaBanner
+          title={t("Media.title")}
+          description={t("Media.description")}
+        />
+        <div className="w-full flex items-center justify-between">
+          <MediaAdditional
+            variant="green"
+            title={t("Media.additionalGreenTitle")}
+            description={t("Media.additionalGreenDescription")}
+          />
+          <MediaAdditional
+            variant="blue"
+            title={t("Media.additionalBlueTitle")}
+            description={t("Media.additionalBlueDescription")}
+          />
+        </div>
+      </div>
+
       <Form />
       <Footer />
       <div className="w-full max-w-[var(--max-width)] flex justify-between font-medium text-[15px] leading-[18.15px] text-[#858585] py-8">
