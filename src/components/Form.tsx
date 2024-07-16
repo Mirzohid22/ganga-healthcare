@@ -12,7 +12,6 @@ export default function Form() {
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const commentRef = useRef<HTMLTextAreaElement>(null);
-  const termsRef = useRef<HTMLInputElement>(null);
   const [nameHasError, setNameHasError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<string>("");
   const [phoneHasError, setPhoneHasError] = useState<boolean>(false);
@@ -74,14 +73,12 @@ export default function Form() {
     const name = nameRef.current!.value;
     const phone = phoneRef.current!.value.split(" ").join("");
     const comment = commentRef.current!.value;
-    const terms = termsRef.current!.value;
     const id = toast.loading("sending...");
     if (name && phone) {
       const { status, message } = await submitFormData({
         fullName: name,
         comment,
         phone,
-        terms: Boolean(terms),
       });
       if (status === "success") {
         toast.dismiss(id);
@@ -179,18 +176,6 @@ export default function Form() {
               placeholder="Write your comment"
               className="max-w-[400px] w-full h-[150px] bg-[var(--secondary)] rounded-[10px] p-3 outline-none resize-none"
             />
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <input
-              ref={termsRef}
-              type="checkbox"
-              id="terms"
-              name="terms"
-              className="w-4 h-4 bg-[#D9D9D9] rounded-[3px]"
-            />
-            <label htmlFor="terms">
-              I accept all <b>terms & conditions.</b>
-            </label>
           </div>
         </div>
         <CustomButton
