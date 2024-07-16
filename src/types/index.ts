@@ -7,3 +7,13 @@ export type Member = {
     createdAt: string;
     updatedAt: string;
 }
+
+export type Blog = {
+    id: string;
+    image: string;
+    title: string;
+    description: string;
+    related?: string[];
+    content?: string;
+    createdAt: string;
+}

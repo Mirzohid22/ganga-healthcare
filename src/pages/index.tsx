@@ -8,14 +8,21 @@ import Additional from "@/components/common/Additional";
 import MediaBanner from "@/components/common/MediaBanner";
 import MediaAdditional from "@/components/common/MediaAdditional";
 import Carousel from "@/components/Carousel";
+import Blog from "@/components/common/Blog";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
-import { type Member } from "@/types";
+import { type Member, type Blog as BlogType } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ members }: { members: Member[] }) {
+export default function Home({
+  members,
+  blogs,
+}: {
+  members: Member[];
+  blogs: BlogType[];
+}) {
   const { t } = useTranslation("common");
   return (
     <main
@@ -75,6 +82,19 @@ export default function Home({ members }: { members: Member[] }) {
         <Carousel members={members} />
       </section>
 
+      {/* blogs */}
+
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-44">
+        <h2 className="w-1/2 font-bold text-[32px] leading-[38.73px] text-center">
+          {t("Blogs.title")}
+        </h2>
+        <div className="w-full max-w-[var(--max-width)] flex items-center justify-between">
+          {blogs.map((blog) => (
+            <Blog key={blog.id} {...blog} />
+          ))}
+        </div>
+      </section>
+
       <Form />
 
       <Footer />
@@ -89,23 +109,28 @@ export default function Home({ members }: { members: Member[] }) {
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const URL = process.env.NEXT_PUBLIC_URL;
-  const response = await fetch(`${URL}/member`, {
+  const responseMembers = await fetch(`${URL}/member`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
 
-  const {
-    status,
-    message,
-    members,
-  }: { status: string; message: string; members: Member[] } =
-    await response.json();
+  const responseBlogs = await fetch(`${URL}/blog?short=1`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const { members }: { members: Member[] } = await responseMembers.json();
+
+  const { data: blogs }: { data: BlogType[] } = await responseBlogs.json();
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
       members,
+      blogs,
       // Will be passed to the page component as props
     },
   };
