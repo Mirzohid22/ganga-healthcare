@@ -21,5 +21,13 @@
     },
     "Blogs": {
         "title": "The Skilled Professionals Making A Difference At Mavis Clinic"
+    },
+    "Contact": {
+        "addressTitle": "Adress",
+        "address": "Uzbekistan, Tashkent Mirzo Ulugek, 1100002",
+        "phoneTitle": "Phone",
+        "phone": "+998 97 123 45 67",
+        "emailTitle": "Email",
+        "email": "info@gmail.com"
     }
 }
