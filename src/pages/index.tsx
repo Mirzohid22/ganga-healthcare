@@ -38,18 +38,21 @@ export default function Home({
       <div className="w-full max-w-[var(--max-width)] flex items-center justify-between py-7 gap-7">
         <Additional
           key={1}
+          justify="end"
           variant="yellow"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
         />
         <Additional
           key={2}
+          justify="end"
           variant="blue"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
         />
         <Additional
           key={3}
+          justify="end"    
           variant="lime"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
