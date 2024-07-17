@@ -29,5 +29,16 @@
         "phone": "+998 97 123 45 67",
         "emailTitle": "Email",
         "email": "info@gmail.com"
+    },
+    "Company": {
+        "articleTitle": "Welcome to Mavis, your trusted destination for cosmetic excellence and personalized care.",
+        "articleBodyOne": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
+        "articleBodyTwo": "Ut wisi enim ad minim veniam, quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et iusto odio dignissim.",
+        "statisticsOneTitle": "Happy Clients",
+        "statisticsOneNumber": "50K+",
+        "statisticsTwoTitle": "Winning Awards",
+        "statisticsTwoNumber": "100K+",
+        "statisticsThreeTitle": "Happy Clients",
+        "statisticsThreeNumber": "50K+"
     }
 }
