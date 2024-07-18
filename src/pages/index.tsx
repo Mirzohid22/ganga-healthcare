@@ -93,7 +93,7 @@ export default function Home({
         </h2>
         <div className="w-full max-w-[var(--max-width)] flex items-center justify-between">
           {blogs.map((blog) => (
-            <Blog key={blog.id} {...blog} />
+            <Blog key={blog._id} {...blog} />
           ))}
         </div>
       </section>
