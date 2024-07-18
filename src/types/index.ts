@@ -1,5 +1,5 @@
 export type Member = {
-    id: string;
+    _id: string;
     name: string;
     profession: string;
     image: string;
@@ -9,7 +9,7 @@ export type Member = {
 }
 
 export type Blog = {
-    id: string;
+    _id: string;
     image: string;
     title: string;
     description: string;

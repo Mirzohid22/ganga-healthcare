@@ -48,20 +48,20 @@ const Carousel: React.FC<{ members: MemberType[] }> = ({
             (members.length + 1) * 550
           }px] m-0 relative h-[550px] bg-white`}
         >
-          {members.map(({ id, ...rest }) => {
+          {members.map(({ _id, ...rest }) => {
             return (
               <section
-                key={id}
+                key={_id}
                 ref={section}
-                className="skill-set px-7 w-[500px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
+                className="skill-set px-7 w-[408px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
               >
-                <Member id={id} {...rest} key={id} />
+                <Member _id={_id} {...rest} key={_id} />
               </section>
             );
           })}
           <section
             ref={section}
-            className="skill-set px-7 w-[500px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
+            className="skill-set px-7 w-[408px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
           ></section>
         </div>
       </div>
