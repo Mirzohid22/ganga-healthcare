@@ -17,3 +17,15 @@ export type Blog = {
     content?: string;
     createdAt: string;
 }
+
+export type Product = {
+    _id: string;
+    image: string;
+    title: string;
+    description: string;
+    price: number;
+    inStock: boolean;
+    createdAt: string;
+    content?: string;
+    types?: string[];
+}
