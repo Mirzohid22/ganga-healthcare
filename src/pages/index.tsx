@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import Additional from "@/components/common/Additional";
+import Product from "@/components/common/Product";
 import MediaBanner from "@/components/common/MediaBanner";
 import MediaAdditional from "@/components/common/MediaAdditional";
 import Carousel from "@/components/Carousel";
@@ -12,16 +13,22 @@ import Blog from "@/components/common/Blog";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
-import { type Member, type Blog as BlogType, type Product } from "@/types";
+import {
+  type Member,
+  type Blog as BlogType,
+  type Product as ProductType,
+} from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
   members,
   blogs,
+  products,
 }: {
   members: Member[];
   blogs: BlogType[];
+  products: ProductType[];
 }) {
   const { t } = useTranslation("common");
   return (
@@ -58,6 +65,20 @@ export default function Home({
           description={t("Welcome.additionalDescription")}
         />
       </div>
+
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-center gap-[60px] my-44">
+        <h2 className="font-bold text-[32px] leading-[38.73px]">
+          Популярные препараты
+        </h2>
+        <div className="w-full max-w-[var(--max-width)] grid grid-cols-1 gap-1 gap-y-[90px] md:grid-cols-2 lg:grid-cols-4 mt-[60px]">
+          {products.map((product) => (
+            <Product key={product._id} {...product} />
+          ))}
+        </div>
+
+        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">Смотреть все популярные препараты</button>
+      </section>
+
       <div className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-between gap-9">
         <MediaBanner
           title={t("Media.title")}
@@ -136,9 +157,8 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 
   const { data: blogs }: { data: BlogType[] } = await responseBlogs.json();
 
-  const { data: products }: { data: Product[] } = await responseProducts.json();
-
-  console.log("products", products);
+  const { data: products }: { data: ProductType[] } =
+    await responseProducts.json();
 
   return {
     props: {
