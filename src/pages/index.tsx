@@ -12,7 +12,7 @@ import Blog from "@/components/common/Blog";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
-import { type Member, type Blog as BlogType } from "@/types";
+import { type Member, type Blog as BlogType, type Product } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,7 +52,7 @@ export default function Home({
         />
         <Additional
           key={3}
-          justify="end"    
+          justify="end"
           variant="lime"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
@@ -125,15 +125,27 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       "Content-Type": "application/json",
     },
   });
+  const responseProducts = await fetch(`${URL}/product`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   const { members }: { members: Member[] } = await responseMembers.json();
 
   const { data: blogs }: { data: BlogType[] } = await responseBlogs.json();
+
+  const { data: products }: { data: Product[] } = await responseProducts.json();
+
+  console.log("products", products);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
       members,
       blogs,
+      products,
       // Will be passed to the page component as props
     },
   };
