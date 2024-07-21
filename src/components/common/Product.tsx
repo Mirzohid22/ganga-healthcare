@@ -1,11 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import { type Product as ProductType } from "@/types";
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
-export default function Product({ image, name, price, inStock }: ProductType) {
+export default function Product({
+  _id,
+  image,
+  name,
+  price,
+  inStock,
+}: ProductType) {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/products/${_id}`);
+  };
   return (
-    <div className="h-[380px] w-[280px] flex flex-col justify-start items-center gap-2 rounded-[10px] p-6 hover:bg-[#F8F8F8]">
+    <div
+      onClick={handleClick}
+      className="h-[380px] w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-[#F8F8F8]"
+    >
       <div className="w-full h-[280px]">
         <img
           src={`${URL}/${image}`}
@@ -15,22 +29,28 @@ export default function Product({ image, name, price, inStock }: ProductType) {
           className="rounded-[10px] object-cover"
         />
       </div>
-      <h3 className="font-bold text-[24px] leading-[29.05px]">{name}</h3>
-      <p className="font-medium text-[12px] leading-[14.52px] text-[#C1C1C1]">
-        {price}
-      </p>
-      <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px]">
-        Заказать
-      </button>
-      {inStock ? (
-        <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
-          В наличии
+
+      <div className="w-full flex flex-col items-center justify-start gap-2">
+        <h3 className="font-bold text-[24px] leading-[29.05px]">{name}</h3>
+        <p className="font-medium text-[12px] leading-[14.52px] text-[#C1C1C1]">
+          {price}
         </p>
-      ) : (
-        <p className="font-medium text-[12px] leading-[14.52px] text-[#FF4D4F]">
-          Нет в наличии
-        </p>
-      )}
+      </div>
+
+      <div className="w-full flex flex-col items-center justify-start gap-2">
+        <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px]">
+          Заказать
+        </button>
+        {inStock ? (
+          <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
+            В наличии
+          </p>
+        ) : (
+          <p className="font-medium text-[12px] leading-[14.52px] text-[#FF4D4F]">
+            Нет в наличии
+          </p>
+        )}
+      </div>
     </div>
   );
 }

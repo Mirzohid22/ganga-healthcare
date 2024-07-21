@@ -29,3 +29,15 @@ export type Product = {
     content?: string;
     types?: string[];
 }
+
+export type Group = {
+    _id: string;
+    name: string;
+    types: Omit<Type, "groupID">[];
+}
+
+export type Type = {
+    _id: string;
+    name: string;
+    groupID: string;
+}
