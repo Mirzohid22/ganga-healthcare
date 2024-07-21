@@ -77,8 +77,20 @@ export default function Home({
           ))}
         </div>
 
-        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">
+        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto">
           Смотреть все популярные препараты
+        </button>
+        <h2 className="font-bold text-[32px] leading-[38.73px]">
+          Сезонные препараты
+        </h2>
+        <div className="w-full max-w-[var(--max-width)] grid grid-cols-1 gap-1 gap-y-[90px] md:grid-cols-2 lg:grid-cols-4 mt-[60px]">
+          {products.slice(4).map((product) => (
+            <Product key={product._id} {...product} />
+          ))}
+        </div>
+
+        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">
+          Смотреть все сезонные препараты
         </button>
       </section>
 
