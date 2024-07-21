@@ -38,7 +38,10 @@ export default function Product({
       </div>
 
       <div className="w-full flex flex-col items-center justify-start gap-2">
-        <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px]">
+        <button
+          className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+        >
           Заказать
         </button>
         {inStock ? (

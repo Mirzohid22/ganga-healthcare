@@ -36,11 +36,13 @@ export default function Page({
       <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-2">
         <button
           onClick={handleClick}
-          className="w-[105px] h-10 bg-[#EBEBEB80] rounded-[10px] font-medium text-sm leading-[16.94px] text-center text-[#858585]"
+          className="w-[105px] h-10 bg-[#EBEBEB80] rounded-[10px] font-medium text-sm leading-[16.94px] text-center text-[#858585] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
         >
           Products
         </button>
-        <button className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center">
+        <button className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out">
           {"<- "}
           Adhesive Bandage
         </button>
@@ -84,10 +86,12 @@ export default function Page({
           </div>
 
           <div className="flex gap-4">
-            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px]">
+            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out">
               Заказать
             </button>
-            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px]">
+            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out">
               Найти в аптеках
             </button>
           </div>

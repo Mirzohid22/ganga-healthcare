@@ -77,7 +77,10 @@ export default function Home({
           ))}
         </div>
 
-        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto">
+        <button
+          className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+        >
           Смотреть все популярные препараты
         </button>
         <h2 className="font-bold text-[32px] leading-[38.73px]">
@@ -89,7 +92,10 @@ export default function Home({
           ))}
         </div>
 
-        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">
+        <button
+          className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+        >
           Смотреть все сезонные препараты
         </button>
       </section>
