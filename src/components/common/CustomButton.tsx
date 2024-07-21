@@ -23,7 +23,7 @@ export default function CustomButton({
              : "bg-[var(--secondary)]"
          }
          disabled:bg-[var(--secondary)] disabled:active:scale-100 disabled:text-[#CDCDCD]
-         active:bg-[var(--common-blue)] active:scale-95
+         active:opacity-95 active:scale-95
          transition duration-400 ease-in-out disabled:cursor-not-allowed disabled:border-slate-200 disabled:border
          `}
     >

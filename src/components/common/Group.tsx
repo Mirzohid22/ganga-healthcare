@@ -25,6 +25,9 @@ export default function Group({ name, types }: GroupType) {
               });
             }}
             className={`w-full text-left
+                active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out
+         ring-0 outline-none
           ${currentTypes.includes(_id) ? "text-[#699CFF]" : "text-[#7D7D7D]"}
           `}
           >

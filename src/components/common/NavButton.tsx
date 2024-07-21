@@ -11,7 +11,8 @@ const NavButton = () => {
   return (
     <button
       onClick={changeLanguage}
-      className="w-[80px] h-[40px] rounded-[10px] bg-[var(--nav-button)] text-normal text-white font-normal "
+      className="w-[80px] h-[40px] rounded-[10px] bg-[var(--nav-button)] text-normal text-white font-normal active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
     >
       {/* <span className={`${locale === "en" && "text-indigo-400"}`}>EN</span>/
       <span className={`${locale === "ru" && "text-indigo-400"}`}>RU</span> */}

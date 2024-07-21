@@ -47,7 +47,8 @@ export default function Products({
           ))}
 
           <button
-            className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-[#A4A4A4] text-[16px] leading-[19.36px]"
+            className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-[#A4A4A4] text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
             onClick={() => {
               router.push({
                 pathname: router.pathname,
@@ -66,7 +67,8 @@ export default function Products({
               placeholder="Search..."
               className="w-[450px] h-[50px] rounded-[10px] bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
             />
-            <button className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px]">
+            <button className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out">
               Search
             </button>
           </div>
