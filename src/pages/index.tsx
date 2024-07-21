@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { useRef } from "react";
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -31,6 +31,7 @@ export default function Home({
   products: ProductType[];
 }) {
   const { t } = useTranslation("common");
+  const scroller = useRef(null);
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className}`}
@@ -76,7 +77,9 @@ export default function Home({
           ))}
         </div>
 
-        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">Смотреть все популярные препараты</button>
+        <button className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto">
+          Смотреть все популярные препараты
+        </button>
       </section>
 
       <div className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-between gap-9">
@@ -102,8 +105,8 @@ export default function Home({
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
-      <section className="max-w-[var(--max-width)] text-center">
-        <Carousel members={members} />
+      <section ref={scroller} className="max-w-[var(--max-width)] text-center">
+        <Carousel scroller={scroller} members={members} />
       </section>
 
       {/* blogs */}

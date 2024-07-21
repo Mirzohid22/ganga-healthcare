@@ -6,12 +6,16 @@ import { type Member as MemberType } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Carousel: React.FC<{ members: MemberType[] }> = ({
+const Carousel: React.FC<{
+  members: MemberType[];
+  scroller: React.MutableRefObject<HTMLElement | null>;
+}> = ({
   members,
+  scroller,
 }: {
   members: MemberType[];
+  scroller: React.MutableRefObject<HTMLElement | null>;
 }) => {
-  const scroller = useRef(null);
   const section = useRef(null);
 
   useEffect(() => {
@@ -24,6 +28,7 @@ const Carousel: React.FC<{ members: MemberType[] }> = ({
         trigger: scroller.current,
         markers: false,
         pin: true,
+        start: "center center",
         pinSpacing: true,
         scrub: 1,
         invalidateOnRefresh: true,
@@ -36,14 +41,13 @@ const Carousel: React.FC<{ members: MemberType[] }> = ({
     return () => {
       to.kill();
     };
-  }, []);
+  }, [scroller]);
 
   return (
     <div className="overflow-hidden flex">
       <div className="overflow-hidden">
         <div
           id="skills"
-          ref={scroller}
           className={`flex overflow-x-hidden w-[${
             (members.length + 1) * 550
           }px] m-0 relative h-[550px] bg-white`}
@@ -59,10 +63,6 @@ const Carousel: React.FC<{ members: MemberType[] }> = ({
               </section>
             );
           })}
-          <section
-            ref={section}
-            className="skill-set px-7 w-[408px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
-          ></section>
         </div>
       </div>
     </div>

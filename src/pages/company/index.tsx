@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRef } from "react";
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -14,6 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Company({ members }: { members: Member[] }) {
   const { t } = useTranslation("common");
+  const scroller = useRef(null);
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className} gap-4`}
@@ -89,9 +91,10 @@ export default function Company({ members }: { members: Member[] }) {
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
-      <section className="max-w-[var(--max-width)] text-center">
-        <Carousel members={members} />
+      <section ref={scroller} className="max-w-[var(--max-width)] text-center">
+        <Carousel scroller={scroller} members={members} />
       </section>
+
       <Form />
       <Footer />
       <div className="w-full max-w-[var(--max-width)] flex justify-between font-medium text-[15px] leading-[18.15px] text-[#858585] py-8">
