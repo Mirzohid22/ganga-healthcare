@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import NavLink from "./common/NavLink";
+import TransitionLink from "./common/TransitionLink";
 import NavButton from "./common/NavButton";
 import ganga from "../../public/favicon.png";
 // import menu from "../../public/menu.svg";
@@ -10,17 +11,29 @@ const Navigation = () => {
   const { t } = useTranslation("common");
   // const [showMenu, setShowMenu] = useState(false);
   return (
-    <header className="w-[85%] flex items-center justify-center">
+    <header className="w-[85%] flex items-center justify-center select-none">
       <nav className="flex items-center justify-between max-w-[1196px] w-full min-h-[100px]">
-        <a href="./">
+        <TransitionLink href="./" color="bg-transparent">
           <Image src={ganga} alt="Site Logo" width={145} height={60} />
-        </a>
+        </TransitionLink>
         <div className="flex items-center justify-center gap-8">
           <div className="flex items-center justify-center gap-4 max-md:hidden">
-            <NavLink href="/company" text={t("Navigation.company")} />
+            {/* <NavLink href="/company" text={t("Navigation.company")} />
             <NavLink href="/products" text={t("Navigation.products")} />
             <NavLink href="/news" text={t("Navigation.news")} />
-            <NavLink href="/contact" text={t("Navigation.contact")} />
+            <NavLink href="/contact" text={t("Navigation.contact")} /> */}
+            <TransitionLink href="/company" color="bg-[var(--common-lime)]">
+              {t("Navigation.company")}
+            </TransitionLink>
+            <TransitionLink href="/products" color="bg-[var(--common-blue)]">
+              {t("Navigation.products")}
+            </TransitionLink>
+            <TransitionLink href="/news" color="bg-[var(--common-yellow)]">
+              {t("Navigation.news")}
+            </TransitionLink>
+            <TransitionLink href="/contact">
+              {t("Navigation.contact")}
+            </TransitionLink>
           </div>
           <NavButton />
         </div>
