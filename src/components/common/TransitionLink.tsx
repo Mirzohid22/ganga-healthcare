@@ -42,9 +42,15 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
   };
 
   return (
-    <Link {...rest} href={href} onClick={handleTransition}>
-      {children}
-    </Link>
+    <p
+      className={`text-sm ${
+        router.pathname === href ? "font-bold" : "font-medium"
+      }`}
+    >
+      <Link {...rest} href={href} onClick={handleTransition}>
+        {children}
+      </Link>
+    </p>
   );
 };
 

@@ -14,6 +14,8 @@ import Footer from "@/components/Footer";
 
 import { type Product as ProductType, type Group as GroupType } from "@/types";
 
+import bannerImage from "../../../public/banner-products.png";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Products({
@@ -34,7 +36,8 @@ export default function Products({
     >
       <Navigation />
       <Banner
-        variant="blue"
+        image={bannerImage}
+        color="blue"
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
@@ -67,8 +70,10 @@ export default function Products({
               placeholder="Search..."
               className="w-[450px] h-[50px] rounded-[10px] bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
             />
-            <button className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out">
+            <button
+              className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+            >
               Search
             </button>
           </div>

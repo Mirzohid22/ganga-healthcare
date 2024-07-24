@@ -9,7 +9,9 @@ import Carousel from "@/components/Carousel";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 import { type Member } from "@/types";
+
 import mediaFuttor from "../../../public/company-futtor.png";
+import bannerCompany from "../../../public/banner-company.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,8 @@ export default function Company({ members }: { members: Member[] }) {
     >
       <Navigation />
       <Banner
-        variant="lime"
+        image={bannerCompany}
+        color="black"
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
