@@ -11,6 +11,8 @@ import Footer from "@/components/Footer";
 
 import { type Blog as BlogType } from "@/types";
 
+import bannerImage from "../../../public/banner-news.png";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function News({
@@ -27,7 +29,8 @@ export default function News({
     >
       <Navigation />
       <Banner
-        variant="yellow"
+        image={bannerImage}
+        color="black"
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />

@@ -13,6 +13,8 @@ import Blog from "@/components/common/Blog";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
+import blueBanner from "../../public/banner-index.png";
+
 import {
   type Member,
   type Blog as BlogType,
@@ -39,7 +41,8 @@ export default function Home({
       <Navigation />
 
       <Banner
-        variant="green"
+        image={blueBanner}
+        color="white"
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
