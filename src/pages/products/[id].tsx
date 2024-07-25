@@ -41,8 +41,10 @@ export default function Page({
         >
           Products
         </button>
-        <button className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out">
+        <button
+          className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+        >
           {"<- "}
           Adhesive Bandage
         </button>
@@ -86,16 +88,34 @@ export default function Page({
           </div>
 
           <div className="flex gap-4">
-            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out">
+            <button
+              // scrolls to the form
+              onClick={() => {
+                document.getElementsByTagName("form")[0].scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                  inline: "end",
+                });
+              }}
+              className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+            >
               Заказать
             </button>
-            <button className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out">
-              Найти в аптеках
-            </button>
-          </div>
 
+            <a
+              // link to telegram bot
+              href="https://t.me/osonaptekabot"
+              target="_blank"
+            >
+              <button
+                className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+            transition duration-400 ease-in-out"
+              >
+                Найти в аптеках
+              </button>
+            </a>
+          </div>
         </div>
       </section>
 

@@ -4,9 +4,9 @@ import React from "react";
 import { useRouter } from "next/router";
 
 interface TransitionLinkProps extends LinkProps {
+  isButton: boolean;
   children: React.ReactNode;
   href: string;
-  color?: string;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -14,9 +14,9 @@ function sleep(ms: number): Promise<void> {
 }
 
 const TransitionLink: React.FC<TransitionLinkProps> = ({
+  isButton,
   children,
   href,
-  color,
   ...rest
 }) => {
   const router = useRouter();
@@ -27,19 +27,26 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
     const body = document.querySelector("body");
 
     body?.classList.add("page-transition");
-    if (color) {
-      body?.classList.add(`${color}`);
-    }
 
     await sleep(450);
     router.push(href);
     await sleep(450);
 
     body?.classList.remove("page-transition");
-    if (color) {
-      body?.classList.remove(`${color}`);
-    }
   };
+
+  if (isButton) {
+    return (
+      <Link
+        className="mx-auto"
+        {...rest}
+        href={href}
+        onClick={handleTransition}
+      >
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <p

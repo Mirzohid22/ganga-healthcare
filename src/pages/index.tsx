@@ -8,6 +8,7 @@ import Additional from "@/components/common/Additional";
 import Product from "@/components/common/Product";
 import MediaBanner from "@/components/common/MediaBanner";
 import MediaAdditional from "@/components/common/MediaAdditional";
+import TransitionLink from "@/components/common/TransitionLink";
 import Carousel from "@/components/Carousel";
 import Blog from "@/components/common/Blog";
 import Footer from "@/components/Footer";
@@ -80,12 +81,14 @@ export default function Home({
           ))}
         </div>
 
-        <button
-          className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out"
-        >
-          Смотреть все популярные препараты
-        </button>
+        <TransitionLink isButton href="/products">
+          <button
+            className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto active:opacity-95 active:scale-95
+          transition duration-400 ease-in-out"
+          >
+            Смотреть все популярные препараты
+          </button>
+        </TransitionLink>
         <h2 className="font-bold text-[32px] leading-[38.73px]">
           Сезонные препараты
         </h2>
@@ -95,12 +98,14 @@ export default function Home({
           ))}
         </div>
 
-        <button
-          className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out"
-        >
-          Смотреть все сезонные препараты
-        </button>
+        <TransitionLink isButton href="/products">
+          <button
+            className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto active:opacity-95 active:scale-95
+          transition duration-400 ease-in-out"
+          >
+            Смотреть все сезонные препараты
+          </button>
+        </TransitionLink>
       </section>
 
       <div className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-between gap-9">
@@ -157,20 +162,22 @@ export default function Home({
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const URL = process.env.NEXT_PUBLIC_URL;
-  const responseMembers = await fetch(`${URL}/member`, {
+
+  const responseMembers = await fetch(`${URL}/member?locale=${locale}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
 
-  const responseBlogs = await fetch(`${URL}/blog?short=1`, {
+  const responseBlogs = await fetch(`${URL}/blog?short=1&locale=${locale}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const responseProducts = await fetch(`${URL}/product`, {
+
+  const responseProducts = await fetch(`${URL}/product?locale=${locale}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
