@@ -13,7 +13,7 @@ const Navigation = () => {
   return (
     <header className="w-[85%] flex items-center justify-center select-none">
       <nav className="flex items-center justify-between max-w-[1196px] w-full min-h-[100px]">
-        <TransitionLink href="./" color="bg-transparent">
+        <TransitionLink href="./">
           <Image src={ganga} alt="Site Logo" width={145} height={60} />
         </TransitionLink>
         <div className="flex items-center justify-center gap-8">
@@ -22,15 +22,13 @@ const Navigation = () => {
             <NavLink href="/products" text={t("Navigation.products")} />
             <NavLink href="/news" text={t("Navigation.news")} />
             <NavLink href="/contact" text={t("Navigation.contact")} /> */}
-            <TransitionLink href="/company" color="bg-[var(--common-lime)]">
+            <TransitionLink href="/company">
               {t("Navigation.company")}
             </TransitionLink>
-            <TransitionLink href="/products" color="bg-[var(--common-blue)]">
+            <TransitionLink href="/products">
               {t("Navigation.products")}
             </TransitionLink>
-            <TransitionLink href="/news" color="bg-[var(--common-yellow)]">
-              {t("Navigation.news")}
-            </TransitionLink>
+            <TransitionLink href="/news">{t("Navigation.news")}</TransitionLink>
             <TransitionLink href="/contact">
               {t("Navigation.contact")}
             </TransitionLink>

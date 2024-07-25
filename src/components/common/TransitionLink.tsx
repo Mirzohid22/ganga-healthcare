@@ -4,7 +4,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 interface TransitionLinkProps extends LinkProps {
-  isButton: boolean;
+  isButton?: boolean;
   children: React.ReactNode;
   href: string;
 }
@@ -14,7 +14,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 const TransitionLink: React.FC<TransitionLinkProps> = ({
-  isButton,
+  isButton = false,
   children,
   href,
   ...rest
