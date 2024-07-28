@@ -15,7 +15,9 @@ import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
 import blueBanner from "../../public/banner-index.png";
-
+import travrelax from "../../public/travrelax.png";
+import vragdiaria from "../../public/vragdiaria.png";
+import bolnolDiet from "../../public/bolnol-diet.png";
 import {
   type Member,
   type Blog as BlogType,
@@ -49,25 +51,34 @@ export default function Home({
       />
       <div className="w-full max-w-[var(--max-width)] flex items-center justify-between py-7 gap-7">
         <Additional
+          image={travrelax}
           key={1}
           justify="end"
           variant="yellow"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
+          width="156px"
+          height="197px"
         />
         <Additional
+          image={vragdiaria}
           key={2}
           justify="end"
           variant="blue"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
+          width="148px"
+          height="199px"
         />
         <Additional
+          image={bolnolDiet}
           key={3}
           justify="end"
           variant="lime"
           title={t("Welcome.additionalTitle")}
           description={t("Welcome.additionalDescription")}
+          width="129px"
+          height="228px"
         />
       </div>
 

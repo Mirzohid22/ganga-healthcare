@@ -1,14 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import { type Member as MemberType } from "@/types";
-
-const URL = process.env.NEXT_PUBLIC_URL;
 
 export default function Member({ name, image, profession }: MemberType ) {
   return (
     <div className="h-[525px] w-[380px] flex flex-col justify-between items-center">
       <img
-        src={`${URL}/${image}`}
+        src={image}
         alt="member"
         width={380}
         height={450}

@@ -14,7 +14,6 @@ export default function Banner({
   title,
   description,
 }: BannerProps) {
-  console.log(color);
   return (
     <div
       style={{
