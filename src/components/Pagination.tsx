@@ -1,30 +1,17 @@
 import { useRef } from "react";
-import { useRouter } from "next/router";
 import React from "react";
 
 interface PaginationProps {
   total: number;
+  page: number;
+  setPage: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ total }) => {
+const Pagination: React.FC<PaginationProps> = ({ total, page: currentPage, setPage }) => {
   const pagination = useRef<HTMLDivElement>(null);
-  const router = useRouter();
-  const { query } = router;
-  const currentPage = query.page ? parseInt(query.page as string) : 1;
 
   const handleClick = (page: number) => {
-    router.replace({
-      pathname: router.pathname,
-      query: { ...query, page },
-    });
-
-    setTimeout(() => {
-      pagination.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-    }, 500);
+    setPage(page);
   };
 
   return (
@@ -41,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ total }) => {
             active:opacity-95 active:scale-95
          transition duration-400 ease-in-out
             ${
-              currentPage === page
+              page === currentPage
                 ? "bg-[#699CFF] text-white"
                 : "bg-[#F7F7F7] text-[#A4A4A4] border"
             }`}

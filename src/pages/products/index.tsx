@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Inter } from "next/font/google";
@@ -7,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import Group from "@/components/common/Group";
 import Product from "@/components/common/Product";
+import SkeletonProduct from "@/components/common/SkeletonProduct";
 import Pagination from "@/components/Pagination";
 import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
@@ -18,18 +20,63 @@ import bannerImage from "../../../public/banner-products.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Products({
-  products,
-  groups,
-  productMeta,
-}: {
-  products: ProductType[];
-  groups: GroupType[];
-  productMeta: { total: number; limit: string };
-}) {
+export default function Products() {
   const { t } = useTranslation("common");
   const router = useRouter();
   const { query } = router;
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [groups, setGroups] = useState<GroupType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [productMeta, setProductMeta] = useState<{
+    total: number;
+    limit: number;
+  }>({ total: 0, limit: 12 });
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      const URL = process.env.NEXT_PUBLIC_URL;
+      const response = await fetch(`${URL}/group?limit=12`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const { data }: { data: GroupType[] } = await response.json();
+      setGroups(data);
+    };
+    fetchGroups();
+  }, []);
+
+  useEffect(() => {
+    const types = selectedTypes.join(",");
+    const fetchProducts = async () => {
+      setLoading(true);
+      const URL = process.env.NEXT_PUBLIC_URL;
+      const response = await fetch(
+        `${URL}/product?limit=12&page=${page}&types=${types}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const {
+        data,
+        meta,
+      }: {
+        data: ProductType[];
+        meta: { total: number; page: number; limit: number };
+      } = await response.json();
+      setProducts(data);
+      setProductMeta({ total: meta.total, limit: meta.limit });
+      setLoading(false);
+    };
+    fetchProducts();
+  }, [page, query, selectedTypes]);
+
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className} gap-5`}
@@ -46,17 +93,19 @@ export default function Products({
         <div className="w-[231px] h-auto flex flex-col gap-10">
           <h2 className="font-bold text-[24px leading-[29.05px]">Продукция</h2>
           {groups.map((group) => (
-            <Group key={group._id} {...group} />
+            <Group
+              key={group._id}
+              {...group}
+              selectedTypes={selectedTypes}
+              setSelectedTypes={setSelectedTypes}
+            />
           ))}
 
           <button
             className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-[#A4A4A4] text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
             onClick={() => {
-              router.push({
-                pathname: router.pathname,
-                query: { ...query, types: "" },
-              });
+              setSelectedTypes([]);
             }}
           >
             ОЧИСТИТЬ ФИЛЬТР
@@ -77,16 +126,24 @@ export default function Products({
               Search
             </button>
           </div>
+
           <div className="grid grid-cols-1 gap-7 gap-y-[90px] md:grid-cols-2 lg:grid-cols-3 pt-10 pl-10">
-            {products.map((product) => (
-              <Product key={product._id} {...product} />
-            ))}
+            {loading
+              ? Array.from({ length: 12 }).map((_, i) => (
+                  <SkeletonProduct key={i} />
+                ))
+              : products.map((product) => (
+                  <Product key={product._id} {...product} />
+                ))}
           </div>
+
           <div className="mx-auto">
             <Pagination
               total={Math.ceil(
                 Number(productMeta.total) / Number(productMeta.limit)
               )}
+              page={page}
+              setPage={setPage}
             />
           </div>
         </div>
@@ -107,33 +164,9 @@ export default function Products({
 }
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
-  const URL = process.env.NEXT_PUBLIC_URL;
-  const responseProducts = await fetch(`${URL}/product?limit=12`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const responseGroups = await fetch(`${URL}/group?limit=12`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const {
-    data: products,
-    meta: productMeta,
-  }: { data: ProductType[]; meta: { total: string; limit: string } } =
-    await responseProducts.json();
-
-  const { data: groups }: { data: GroupType[] } = await responseGroups.json();
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
-      products,
-      groups,
-      productMeta,
     },
   };
 };
