@@ -3,8 +3,6 @@ import { useCallback } from "react";
 import { type Blog } from "@/types";
 import { useRouter } from "next/router";
 
-const URL = process.env.NEXT_PUBLIC_URL;
-
 export default function Blog({
   image,
   title,
@@ -30,7 +28,7 @@ export default function Blog({
       onClick={handleClick}
     >
       <img
-        src={`${URL}/${image}`}
+        src={image}
         alt={title}
         width={380}
         height={250}
