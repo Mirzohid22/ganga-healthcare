@@ -12,13 +12,15 @@ export default function Footer() {
         <div className="font-normal text-[15px] leading-[18.15px] flex flex-col items-start justify-center gap-1">
           <h4 className="font-bold">Address:</h4>
           <p>
-            Uzbekistan, Tashkent, Mirzo Ulugek <br /> 1100002
+            Юнусабадский район, <br />
+            Хасанбой-I, Исломобод махалля, <br />
+            Tashkent, Uzbekistan
           </p>
         </div>
 
         <div className="font-normal text-[15px] leading-[18.15px] flex flex-col items-start justify-center gap-1">
           <h4 className="font-bold">Phone:</h4>
-          <p>+998 (00) 000 00 00</p>
+          <p>8 90 322 00 40</p>
         </div>
 
         <div className="font-normal text-[15px] leading-[18.15px] flex flex-col items-start justify-center gap-1">
@@ -27,13 +29,13 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center justify-center gap-5">
-          <a href="./">
+          <a href="https://www.instagram.com/ganga_healthcare/" target="_blank">
             <Image src={instagram} width={25} height={25} alt="instagram" />
           </a>
-          <a href="./">
+          <a href="https://www.facebook.com/ganga.healthcare/about" target="_blank">
             <Image src={facebook} width={25} height={25} alt="facebook" />
           </a>
-          <a href="./">
+          <a href="https://www.facebook.com/ganga.healthcare/about" target="_blank">
             <Image src={whatsapp} width={25} height={25} alt="whatsapp" />
           </a>
         </div>

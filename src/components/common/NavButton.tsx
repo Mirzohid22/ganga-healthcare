@@ -16,7 +16,7 @@ const NavButton = () => {
     >
       {/* <span className={`${locale === "en" && "text-indigo-400"}`}>EN</span>/
       <span className={`${locale === "ru" && "text-indigo-400"}`}>RU</span> */}
-      <span className={`${locale === "en" && "text-indigo-400"}`}>EN</span>/
+      <span className={`${locale === "en" && "text-indigo-400"}`}>UZ</span>/
       <span className={`${locale === "ru" && "text-indigo-400"}`}>RU</span>
     </button>
   );

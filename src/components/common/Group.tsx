@@ -1,13 +1,14 @@
-import { useRouter } from "next/router";
 import { type Group as GroupType } from "@/types";
 
-export default function Group({ name, types }: GroupType) {
-  const router = useRouter();
-  const { query } = router;
-  const currentTypes: string[] = query.types
-    ? (query.types as string).split(",")
-    : [];
-
+export default function Group({
+  name,
+  types,
+  selectedTypes,
+  setSelectedTypes,
+}: GroupType & {
+  selectedTypes: string[];
+  setSelectedTypes: (types: string[]) => void;
+}) {
   return (
     <div className="w-[231px] h-auto flex flex-col gap-7">
       <h2 className="text-[14px] font-bold leading-[16.94px]">{name}</h2>
@@ -16,24 +17,17 @@ export default function Group({ name, types }: GroupType) {
           <button
             key={_id}
             onClick={() => {
-              const newTypes = currentTypes.includes(_id)
-                ? currentTypes.filter((type) => type !== _id)
-                : [...currentTypes, _id];
-              router.push({
-                pathname: router.pathname,
-                query: { ...query, types: newTypes.join(",") },
-              });
+              const newTypes = selectedTypes.includes(_id)
+                ? selectedTypes.filter((type) => type !== _id)
+                : [...selectedTypes, _id];
+              setSelectedTypes(newTypes);
             }}
             className={`w-full text-left
           active:opacity-95 active:scale-95
           transition duration-400 ease-in-out
           ring-0 outline-none 
           hover:bg-[var(--secondary)] hover:rounded-[10px] hover:shadow-sm
-          ${
-            currentTypes.includes(_id)
-              ? "font-bold"
-              : "text-[#7D7D7D]"
-          }
+          ${selectedTypes.includes(_id) ? "font-bold" : "text-[#7D7D7D]"}
           `}
           >
             {name}

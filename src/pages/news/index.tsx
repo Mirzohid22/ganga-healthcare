@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import Blog from "@/components/common/Blog";
-import Pagination from "@/components/Pagination";
+// import Pagination from "@/components/Pagination";
 import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
@@ -41,7 +41,7 @@ export default function News({
         ))}
       </section>
 
-      <Pagination total={Math.ceil(meta.total / meta.limit)} />
+      {/* <Pagination total={Math.ceil(meta.total / meta.limit)} /> */}
 
       <MediaBanner
         title={t("Media.title")}
