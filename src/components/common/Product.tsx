@@ -2,8 +2,6 @@
 import { useRouter } from "next/router";
 import { type Product as ProductType } from "@/types";
 
-const URL = process.env.NEXT_PUBLIC_URL;
-
 export default function Product({
   _id,
   image,
@@ -22,7 +20,7 @@ export default function Product({
     >
       <div className="w-full h-[280px]">
         <img
-          src={`${URL}/${image}`}
+          src={image}
           alt="member"
           width={256}
           height={250}
@@ -31,7 +29,10 @@ export default function Product({
       </div>
 
       <div className="w-full flex flex-col items-center justify-start gap-2">
-        <h3 className="font-bold text-[24px] leading-[29.05px]">{name}</h3>
+        <h3 className="font-bold text-[24px] leading-[29.05px]">
+          {/* if characters are more than 14 show 3 dots at the end */}
+          {name.length > 14 ? name.slice(0, 11) + "..." : name}
+        </h3>
         <p className="font-medium text-[12px] leading-[14.52px] text-[#C1C1C1]">
           {price}
         </p>

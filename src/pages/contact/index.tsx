@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
-import Additional from "@/components/common/Additional";
+import AdditionalContact from "@/components/common/AdditionalContact";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 
@@ -24,21 +24,21 @@ export default function Contact() {
         allowFullScreen={true}
       ></iframe>
       <div className="w-full max-w-[var(--max-width)] flex items-center justify-between py-7 gap-7">
-        <Additional
+        <AdditionalContact
           key={1}
           justify="between"
           variant="yellow"
           title={t("Contact.addressTitle")}
           description={t("Contact.address")}
         />
-        <Additional
+        <AdditionalContact
           key={2}
           justify="between"
           variant="blue"
           title={t("Contact.phoneTitle")}
           description={t("Contact.phone")}
         />
-        <Additional
+        <AdditionalContact
           key={3}
           justify="between"
           variant="lime"
