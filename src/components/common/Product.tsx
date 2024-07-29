@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
+import TransitionLink from "./TransitionLink";
 import { type Product as ProductType } from "@/types";
 
 export default function Product({
@@ -9,13 +9,8 @@ export default function Product({
   price,
   inStock,
 }: ProductType) {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/products/${_id}`);
-  };
   return (
     <div
-      onClick={handleClick}
       className="h-[380px] w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-[#F8F8F8]"
     >
       <div className="w-full h-[280px]">
@@ -38,12 +33,17 @@ export default function Product({
       </div>
 
       <div className="w-full flex flex-col items-center justify-start gap-2">
-        <button
-          className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out"
+        <TransitionLink
+          isButton
+          href={`/products/${_id}`}
         >
-          Заказать
-        </button>
+          <button
+            className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+          transition duration-400 ease-in-out"
+          >
+            Заказать
+          </button>
+        </TransitionLink>
         {inStock ? (
           <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
             В наличии

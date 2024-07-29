@@ -18,6 +18,8 @@ import blueBanner from "../../public/banner-index.png";
 import travrelax from "../../public/travrelax.png";
 import vragdiaria from "../../public/vragdiaria.png";
 import bolnolDiet from "../../public/bolnol-diet.png";
+import mediaOrangeAdditional from "../../public/media-orange-additional.png";
+import mediaBlueAdditional from "../../public/media-blue-additional.png";
 import {
   type Member,
   type Blog as BlogType,
@@ -92,7 +94,7 @@ export default function Home({
           ))}
         </div>
 
-        <TransitionLink isButton href="/products">
+        <TransitionLink isButton href="/products" centered>
           <button
             className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] my-10 mx-auto active:opacity-95 active:scale-95
           transition duration-400 ease-in-out"
@@ -109,7 +111,7 @@ export default function Home({
           ))}
         </div>
 
-        <TransitionLink isButton href="/products">
+        <TransitionLink isButton href="/products" centered>
           <button
             className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto active:opacity-95 active:scale-95
           transition duration-400 ease-in-out"
@@ -126,12 +128,12 @@ export default function Home({
         />
         <div className="w-full flex items-center justify-between">
           <MediaAdditional
-            variant="green"
+            image={mediaOrangeAdditional}
             title={t("Media.additionalGreenTitle")}
             description={t("Media.additionalGreenDescription")}
           />
           <MediaAdditional
-            variant="blue"
+            image={mediaBlueAdditional}
             title={t("Media.additionalBlueTitle")}
             description={t("Media.additionalBlueDescription")}
           />

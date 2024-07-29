@@ -9,6 +9,7 @@ import Product from "@/components/common/Product";
 import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
+import TransitionLink from "@/components/common/TransitionLink";
 
 import { type Product as ProductType } from "@/types";
 import { type GetStaticPaths } from "next";
@@ -17,15 +18,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Page({
   products,
-  meta,
 }: {
   products: ProductType[];
   meta: { total: number; page: number; limit: number };
 }) {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/products`);
-  };
   const { t } = useTranslation("common");
   return (
     <main
@@ -35,19 +31,20 @@ export default function Page({
 
       <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-2">
         <button
-          onClick={handleClick}
           className="w-[105px] h-10 bg-[#EBEBEB80] rounded-[10px] font-medium text-sm leading-[16.94px] text-center text-[#858585] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
         >
           Products
         </button>
-        <button
-          className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out"
-        >
-          {"<- "}
-          Adhesive Bandage
-        </button>
+        <TransitionLink isButton href="/products">
+          <button
+            className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
+          transition duration-400 ease-in-out"
+          >
+            {"<- "}
+            Adhesive Bandage
+          </button>
+        </TransitionLink>
       </div>
 
       <section className="w-full max-w-[var(--max-width)] flex items-start justify-start gap-5">
