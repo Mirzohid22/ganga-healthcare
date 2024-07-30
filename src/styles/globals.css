@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add transition to all thins */
+* {
+
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -45,9 +50,9 @@ body {
 }
 
 .page-transition {
-  opacity: 0;
-  transform: translateY(40px);
-  filter: blur(12px);
+  opacity: 0.7;
+  transform: translateY(10px);
+  filter: blur(3px);
 }
 
 .animate-enter {
