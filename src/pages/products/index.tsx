@@ -15,7 +15,7 @@ import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 import { type Product as ProductType, type Group as GroupType } from "@/types";
 import bannerImage from "../../../public/banner-products.png";
-import useDebouncedState from "../hooks/useDebouncedState";
+import useDebouncedState from "@/hooks/useDebouncedState";
 
 const inter = Inter({ subsets: ["latin"] });
 
