@@ -13,14 +13,13 @@ import Pagination from "@/components/Pagination";
 import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
-
 import { type Product as ProductType, type Group as GroupType } from "@/types";
-
 import bannerImage from "../../../public/banner-products.png";
+import useDebouncedState from "../hooks/useDebouncedState";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Products() {
+export default function Products({ locale }: { locale: string }) {
   const { t } = useTranslation("common");
   const router = useRouter();
   const { query } = router;
@@ -33,11 +32,12 @@ export default function Products() {
     total: number;
     limit: number;
   }>({ total: 0, limit: 12 });
+  const [searchQuery, setSearchQuery] = useDebouncedState("", 500);
 
   useEffect(() => {
     const fetchGroups = async () => {
       const URL = process.env.NEXT_PUBLIC_URL;
-      const response = await fetch(`${URL}/group?limit=12`, {
+      const response = await fetch(`${URL}/group?limit=12&locale=${locale}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Products() {
       setGroups(data);
     };
     fetchGroups();
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const types = selectedTypes.join(",");
@@ -55,7 +55,7 @@ export default function Products() {
       setLoading(true);
       const URL = process.env.NEXT_PUBLIC_URL;
       const response = await fetch(
-        `${URL}/product?limit=12&page=${page}&types=${types}`,
+        `${URL}/product?limit=12&page=${page}&locale=${locale}&searchQuery=${searchQuery}&types=${types}`,
         {
           method: "GET",
           headers: {
@@ -75,7 +75,7 @@ export default function Products() {
       setLoading(false);
     };
     fetchProducts();
-  }, [page, query, selectedTypes]);
+  }, [locale, page, query, searchQuery, selectedTypes]);
 
   return (
     <main
@@ -115,11 +115,20 @@ export default function Products() {
         <div className="w-auto flex flex-col justify-start items-end">
           <div className="flex items-center justify-end gap-2">
             <input
+              id="search"
               type="text"
               placeholder="Search..."
               className="w-[450px] h-[50px] rounded-[10px] bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
+              onChange={(e) => {
+                setPage(1);
+                setSearchQuery(e.target.value);
+              }}
             />
             <button
+              // onClick set focus to the input
+              onClick={() => {
+                document?.getElementById("search")?.focus();
+              }}
               className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
             >
@@ -166,6 +175,7 @@ export default function Products() {
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
+      locale,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
