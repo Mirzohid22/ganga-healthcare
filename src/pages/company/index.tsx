@@ -110,7 +110,7 @@ export default function Company({ members }: { members: Member[] }) {
 
 export async function getStaticProps({ locale }: { locale: string }) {
   const URL = process.env.NEXT_PUBLIC_URL;
-  const responseMembers = await fetch(`${URL}/member`, {
+  const responseMembers = await fetch(`${URL}/member?locale=${locale}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
