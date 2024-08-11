@@ -11,9 +11,9 @@ export default function Product({
 }: ProductType) {
   return (
     <div
-      className="h-[380px] w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-[#F8F8F8]"
+      className="h-[420px] w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-gray-100 "
     >
-      <div className="w-full h-[280px]">
+      <div className="w-full h-[280px] transition-transform duration-300 ease-in-out hover:scale-105">
         <img
           src={image}
           alt="member"

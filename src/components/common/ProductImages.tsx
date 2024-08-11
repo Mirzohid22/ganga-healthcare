@@ -24,7 +24,7 @@ export default function ProductImages({ images }: ProductImagesProps) {
               height={88}
               src={image}
               alt={`product-${index}`}
-              className="h-[88px] w-[88px] rounded-[10px]"
+              className="h-[80px] w-[80px] rounded-[10px]"
             />
           </div>
         ))}
