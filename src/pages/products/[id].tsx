@@ -11,18 +11,107 @@ import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 import TransitionLink from "@/components/common/TransitionLink";
 
-import { type Product as ProductType } from "@/types";
+import { type Product as ProductType, type ProductDetailed } from "@/types";
 import { type GetStaticPaths } from "next";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const ProductImagesSkeleton = () => (
+  <div className="flex items-start justify-center gap-2.5 animate-pulse">
+    <div className="flex flex-col items-start justify-start gap-2.5">
+      {[...Array(5)].map((_, index) => (
+        <div
+          key={index}
+          className="h-[88px] w-[88px] bg-gray-300 rounded-[10px]"
+        ></div>
+      ))}
+    </div>
+    <div>
+      <div className="h-[480px] w-[480px] bg-gray-300 rounded-[10px]"></div>
+    </div>
+  </div>
+);
+
+const ProductDetailsSkeleton = () => (
+  <div className="h-[480px] w-[500px] flex flex-col items-start justify-between text-base font-normal leading-[19.36px] text-justify animate-pulse">
+    <div className="flex flex-col items-start justify-start gap-1">
+      <div className="h-[38.73px] w-[300px] bg-gray-300 rounded"></div>
+      <div className="h-[14.52px] w-[150px] bg-gray-300 rounded mt-2"></div>
+    </div>
+
+    <div className="h-[100px] w-full bg-gray-300 rounded mt-4"></div>
+
+    <div className="flex flex-col items-start justify-center gap-5 mt-4">
+      {[...Array(3)].map((_, index) => (
+        <div
+          key={index}
+          className="h-[19.36px] w-[250px] bg-gray-300 rounded"
+        ></div>
+      ))}
+    </div>
+
+    <div className="flex gap-4 mt-4">
+      <div className="w-[220px] h-[50px] bg-gray-300 rounded"></div>
+      <div className="w-[220px] h-[50px] bg-gray-300 rounded"></div>
+    </div>
+  </div>
+);
+
+const DescriptionSkeleton = () => (
+  <section className="w-full max-w-[var(--max-width)] flex flex-col gap-8 animate-pulse">
+    <div className="h-[38.73px] w-[200px] bg-gray-300 rounded"></div>
+
+    {[...Array(5)].map((_, index) => (
+      <div
+        key={index}
+        className="w-full flex flex-col text-base leading-[19.36px] gap-1"
+      >
+        <div className="h-[19.36px] w-[150px] bg-gray-300 rounded mb-2"></div>
+        {[...Array(4)].map((_, subIndex) => (
+          <div
+            key={subIndex}
+            className="h-[19.36px] w-full bg-gray-300 rounded mb-1"
+          ></div>
+        ))}
+        <div className="h-[19.36px] w-[80px] bg-gray-300 rounded mt-2"></div>
+      </div>
+    ))}
+  </section>
+);
+
 export default function Page({
   products,
+  locale,
 }: {
+  locale: string;
   products: ProductType[];
   meta: { total: number; page: number; limit: number };
 }) {
   const { t } = useTranslation("common");
+  const { query } = useRouter();
+  const productId: string = query.id as string;
+  const [product, setProduct] = useState<ProductDetailed | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/product/${productId}?locale=${locale}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const { data }: { data: ProductDetailed } = await response.json();
+      setProduct(data);
+      setLoading(false);
+    };
+    fetchProduct();
+  }, [locale, productId]);
+
   return (
     <main
       className={`min-h-screen flex flex-col items-center justify-start ${inter.className} gap-5`}
@@ -42,155 +131,85 @@ export default function Page({
           transition duration-400 ease-in-out"
           >
             {"<- "}
-            Adhesive Bandage
+            {product?.name}
           </button>
         </TransitionLink>
       </div>
 
       <section className="w-full max-w-[var(--max-width)] flex items-start justify-start gap-5">
-        <ProductImages />
-        <div className="h-[480px] w-[500px] flex flex-col items-start justify-between text-base font-normal leading-[19.36px] text-justify">
-          <div className="flex flex-col items-start justify-start gap-1">
-            <h2 className="font-bold text-[32px] leading-[38.73px]">
-              Adhesive Bandage
-            </h2>
-            <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
-              В наличии
-            </p>
-          </div>
+        {loading ? (
+          <>
+            <ProductImagesSkeleton />
+            <ProductDetailsSkeleton />
+          </>
+        ) : (
+          <>
+            <ProductImages images={[product?.image, ...product?.images as string[]] as string[]} />
+            <div className="h-[480px] w-[500px] flex flex-col items-start justify-between text-base font-normal leading-[19.36px] text-justify">
+              <div className="flex flex-col items-start justify-start gap-1">
+                <h2 className="font-bold text-[32px] leading-[38.73px]">
+                  {product?.name}
+                </h2>
+                <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
+                  {product?.inStock
+                    ? t("Product.inStock")
+                    : t("Product.outOfStock")}
+                </p>
+              </div>
 
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+              <p>{product?.description}</p>
 
-          <div className="flex flex-col items-start justify-center gap-5">
-            <p>
-              <b>Категория:</b> Противовоспалительные
-            </p>
-            <p>
-              <b>Cтрана происхождения:</b> Индия
-            </p>
-            <p>
-              <b>Фармакотерапевтическая группа:</b>
-              Анальгетик-антипиретик
-            </p>
-            <p>
-              <b>Активное вещество:</b>
-              Парацетамол, Ибупрофен
-            </p>
-            <p>
-              <b>Количество в упаковке:</b>1
-            </p>
-          </div>
+              <div className="flex flex-col items-start justify-center gap-5">
+                {product?.details.map((detail) => (
+                  <p key={detail.label}>
+                    <b>{detail.label}:</b> {detail.value}
+                  </p>
+                ))}
+              </div>
 
-          <div className="flex gap-4">
-            <button
-              // scrolls to the form
-              onClick={() => {
-                document.getElementsByTagName("form")[0].scrollIntoView({
-                  behavior: "smooth",
-                  block: "center",
-                  inline: "end",
-                });
-              }}
-              className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+              <div className="flex gap-4">
+                <button
+                  // scrolls to the form
+                  onClick={() => {
+                    document.getElementsByTagName("form")[0].scrollIntoView({
+                      behavior: "smooth",
+                      block: "center",
+                      inline: "end",
+                    });
+                  }}
+                  className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
-            >
-              Заказать
-            </button>
+                >
+                  Заказать
+                </button>
 
-            <a
-              // link to telegram bot
-              href="https://t.me/osonaptekabot"
-              target="_blank"
-            >
-              <button
-                className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-            transition duration-400 ease-in-out"
-              >
-                Найти в аптеках
-              </button>
-            </a>
-          </div>
-        </div>
+                <a
+                  // link to telegram bot
+                  href="https://t.me/osonaptekabot"
+                  target="_blank"
+                >
+                  <button
+                    className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+                transition duration-400 ease-in-out"
+                  >
+                    Найти в аптеках
+                  </button>
+                </a>
+              </div>
+            </div>
+          </>
+        )}
       </section>
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col gap-8">
-        <h2 className="font-bold text-[32px] leading-[38.73px]">Description</h2>
-
-        <div className="w-full flex flex-col text-base leading-[19.36px] gap-1">
-          <h3 className="font-bold mb-2">Форма выпуска</h3>
-          <p>Лекарственная форма: Суспензия для приёма внутрь для детей.</p>
-          <p>
-            Форма выпуска: По 60 мл в пластмассовом флаконе. 1 флакон вместе с
-            инструкцией по применению в картонной упаковке.
-          </p>
-          <p className="mt-2">СОСТАВ:</p>
-          <p>Каждые 5 мл сиропа содержат:</p>
-          <p>Активные вещества: Парацетамол 162,5 мг, Ибупрофен 100 мг.</p>
-          <p>
-            Вспомогательные вещества: сахароза, ксантановая камедь, кремний
-            коллоидный безводный, метилпарабен, пропилпарабен, натрия бензоат,
-            натрия сахарин, сорбитол, повидон К-30, Твин-80, краситель эритрозин
-            супра, вкусовой наполнитель апельсина, вода очищенная.
-          </p>
-        </div>
-
-        <div className="w-full flex flex-col text-base leading-[19.36px] gap-1">
-          <h3 className="font-bold mb-2">Состав и форма выпуска</h3>
-          <p>
-            Суспензия по 60 мл в пластмассовом флаконе. 1 флакон вместе с
-            инструкцией по применению в картонной упаковке.
-          </p>
-        </div>
-
-        <div className="w-full flex flex-col text-base leading-[19.36px] gap-1">
-          <h3 className="font-bold mb-2">Фармокологическое действие</h3>
-          <p>
-            Парацетамол входящий в состав суспензии Болнол плюс парацетамол
-            ингибирует циклооксигеназу преимущественно в ЦНС. Жаропонижающее
-            свойство парацетамола обусловлено подавлением биосинтеза
-            простагландинов непосредственно в гипоталамусе, в особенности
-            простагландинов Е2 и F2 медиаторов центра теплорегуляции. Ибупрофен
-            в дополнение к анальгезирующему и жаропонижающему свойствам обладает
-            заметным противовоспалительным действием. Ибупрофен является
-            эффективным ингибитором фермента циклооксигеназы, что приводит к
-            заметному подавлению синтеза простагландинов участвующих в
-            патогенезе боли и воспаления.
-          </p>
-        </div>
-
-        <div className="w-full flex flex-col text-base leading-[19.36px] gap-1">
-          <h3 className="font-bold mb-2">Состав</h3>
-          <p>
-            Каждые 5 мл сиропа содержат: Активные вещества: Парацетамол 162,5
-            мг, Ибупрофен 100 мг Вспомогательные вещества: сахароза, ксантановая
-            камедь, кремний коллоидный безводный, метилпарабен, пропилпарабен,
-            натрия бензоат, натрия сахарин, сорбитол, повидон К-30, Твин-80,
-            краситель эритрозин супра, вкусовой наполнитель апельсина, вода
-            очищенная
-          </p>
-        </div>
-
-        <div className="w-full flex flex-col text-base leading-[19.36px] gap-1">
-          <h3 className="font-bold mb-2">Фармакокинетика</h3>
-          <p>
-            Входящий в состав суспензии Болнол плюс парацетамол быстро
-            всасывается из желудочно-кишечного тракта и пик его концентрации в
-            плазме достигается через 10 - 60 мин после приема препарата.
-            Парацетамол равномерно распределяется в большинстве жидких сред
-            организма. Метаболизируется преимущественно в печени и выводится
-            почками. Период полувыведения парацетамол составляет от 1 до 3
-            часов. Входящий в состав суспензии Болнол плюс ибупрофен быстро
-            всасывается из желудочно-кишечного тракта и пик его концентрации в
-            плазме достигается через 1-2 часа после приема препарата. Ибупрофен
-            хорошо связывается с белками плазмы. Быстро выводится с мочой
-            преимущественно в виде метаболитов и их конъюгатов.
-          </p>
-        </div>
-      </section>
-
+      {loading ? (
+        <DescriptionSkeleton />
+      ) : (
+        <section
+          className="w-full max-w-[var(--max-width)] flex flex-col gap-8"
+  
+          dangerouslySetInnerHTML={{ __html: product?.content as string }}
+        ></section>
+      )}
       <section className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-center gap-10 py-20">
         <h2 className="font-bold text-[32px] leading-[38.73px]">
           Популярные препараты
@@ -234,6 +253,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
   } = await responseProducts.json();
   return {
     props: {
+      locale,
       ...(await serverSideTranslations(locale, ["common"])),
       products,
       // Will be passed to the page component as props

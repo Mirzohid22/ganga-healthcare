@@ -40,5 +40,9 @@
         "statisticsTwoNumber": "100K+",
         "statisticsThreeTitle": "Happy Clients",
         "statisticsThreeNumber": "50K+"
+    },
+    "Product": {
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock"
     }
 }
