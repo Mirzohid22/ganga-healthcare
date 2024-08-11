@@ -1,8 +1,10 @@
 const config = {
-    i18n: {
-      locales: ["en", "ru"],
-      defaultLocale: "en",
-    },
-  };
-  module.exports = config;
-  
+  i18n: {
+    locales: ["en", "ru"],
+    defaultLocale: "en",
+  },
+  images: {
+    domains: ["gangahealthcare.s3.us-east-2.amazonaws.com"],
+  },
+};
+module.exports = config;

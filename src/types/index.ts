@@ -41,3 +41,17 @@ export type Type = {
     name: string;
     groupID: string;
 }
+
+export type ProductDetailed = {
+    _id: string;
+    image: string;
+    name: string;
+    description: string;
+    price: number;
+    inStock: boolean;
+    createdAt: string;
+    content: string | TrustedHTML;
+    types: string[];
+    images: string[];
+    details: { label: string; value: string }[];
+}

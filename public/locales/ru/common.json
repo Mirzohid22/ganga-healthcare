@@ -42,5 +42,9 @@
         "statisticsTwoNumber": "100K+",
         "statisticsThreeTitle": "Счастливые клиенты",
         "statisticsThreeNumber": "50K+"
+    },
+    "Product": {
+        "inStock": "В наличии",
+        "outOfStock": "Нет в наличии"
     }
 }
