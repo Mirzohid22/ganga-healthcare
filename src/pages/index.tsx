@@ -154,7 +154,7 @@ export default function Home({
         <h2 className="w-1/2 font-bold text-[32px] leading-[38.73px] text-center">
           {t("Blogs.title")}
         </h2>
-        <div className="w-full max-w-[var(--max-width)] flex items-center justify-between">
+        <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-[42px]">
           {blogs.map((blog) => (
             <Blog key={blog._id} {...blog} />
           ))}
