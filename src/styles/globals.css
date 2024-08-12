@@ -55,6 +55,7 @@ p {
   font-weight: normal;
   font-size: 16px;
   line-height: 19.47px;
+  /* margin: 1rem 0; */
 }
 
 /* @media (prefers-color-scheme: dark) {

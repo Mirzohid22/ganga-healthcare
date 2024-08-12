@@ -62,7 +62,7 @@ export default function News({
 export async function getStaticProps({ locale }: { locale: string }) {
   const URL = process.env.NEXT_PUBLIC_URL;
 
-  const responseBlogs = await fetch(`${URL}/blog`, {
+  const responseBlogs = await fetch(`${URL}/blog?locale=${locale}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
