@@ -118,7 +118,7 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
         </Link>
       ) : (
         <p
-          className={`text-sm ${
+          className={`text-sm ${centered && "mx-auto "} ${
             router.pathname === href ? "font-bold" : "font-medium"
           }`}
         >

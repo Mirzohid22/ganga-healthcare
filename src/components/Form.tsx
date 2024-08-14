@@ -93,13 +93,13 @@ export default function Form() {
 
   return (
     <section className="w-full max-w-[var(--max-width)] flex items-start justify-start gap-20 my-20">
-      <div>
+      <div className="hidden md:block">
         <Image src={fluttor} width={539} height={632} alt="Form image" />
       </div>
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="flex flex-col items-start justify-start max-w-[400px] gap-10"
+        className="flex flex-col items-start justify-start max-w-[400px] gap-10 mx-auto"
       >
         <h3 className="text-[24px] font-bold leading-[29.05px]">
           Get In Touch

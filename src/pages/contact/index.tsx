@@ -48,10 +48,6 @@ export default function Contact() {
       </div>
       <Form />
       <Footer />
-      <div className="w-full max-w-[var(--max-width)] flex justify-between font-medium text-[15px] leading-[18.15px] text-[#858585] py-8">
-        <p>© Company All Rights Reserved by Romi Agency</p>
-        <p>Terms & Conditions Legal Notice</p>
-      </div>
     </main>
   );
 }

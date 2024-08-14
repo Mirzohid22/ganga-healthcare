@@ -109,8 +109,11 @@ export default function Page({
         </div>
       </section>
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-16">
-        <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-[42px]">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] md:my-44">
+        <h2 className="w-1/2 font-bold text-[32px] leading-[38.73px] text-center mx-auto">
+          {t("Blogs.title")}
+        </h2>
+        <div className="w-full max-w-[var(--max-width)] grid gap-[42px] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
           {blogs.map((blog) => (
             <Blog key={blog._id} {...blog} />
           ))}
@@ -120,10 +123,6 @@ export default function Page({
       <Form />
 
       <Footer />
-      <div className="w-full max-w-[var(--max-width)] flex justify-between font-medium text-[15px] leading-[18.15px] text-[#858585] py-8">
-        <p>© Company All Rights Reserved by Romi Agency</p>
-        <p>Terms & Conditions Legal Notice</p>
-      </div>
     </main>
   );
 }
