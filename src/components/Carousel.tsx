@@ -44,7 +44,7 @@ const Carousel: React.FC<{
   }, [scroller]);
 
   return (
-    <div className="overflow-hidden flex">
+    <div className="hidden md:flex overflow-hidden">
       <div className="overflow-hidden">
         <div
           id="skills"
@@ -52,17 +52,15 @@ const Carousel: React.FC<{
             (members.length + 1) * 550
           }px] m-0 relative h-[550px] bg-white`}
         >
-          {members.map(({ _id, ...rest }) => {
-            return (
-              <section
-                key={_id}
-                ref={section}
-                className="skill-set px-7 w-[408px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
-              >
-                <Member _id={_id} {...rest} key={_id} />
-              </section>
-            );
-          })}
+          {members.map(({ _id, ...rest }) => (
+            <section
+              key={_id}
+              ref={section}
+              className="skill-set px-7 w-[408px] h-[550px] bg-transparent ns-horizontal-section__item flex items-center justify-center z-50"
+            >
+              <Member size="default" _id={_id} {...rest} />
+            </section>
+          ))}
         </div>
       </div>
     </div>

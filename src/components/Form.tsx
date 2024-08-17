@@ -92,7 +92,7 @@ export default function Form() {
   }
 
   return (
-    <section className="w-full max-w-[var(--max-width)] flex items-start justify-start gap-20 my-20">
+    <section className="w-[350px] md:w-full max-w-[var(--max-width)] flex items-start justify-start gap-20 my-20">
       <div className="hidden md:block">
         <Image src={fluttor} width={539} height={632} alt="Form image" />
       </div>
