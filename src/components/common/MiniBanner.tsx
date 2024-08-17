@@ -1,33 +1,33 @@
 import React from "react";
 import { type StaticImageData } from "next/image";
 
-type BannerProps = {
+type MiniBannerProps = {
   image: StaticImageData;
   color: "white" | "black" | "blue";
   title: string;
   description: string;
 };
 
-export default function Banner({
+export default function MiniBanner({
   image,
   color,
   title,
   description,
-}: BannerProps) {
+}: MiniBannerProps) {
   return (
     <div
       style={{
-        height: "450px",
-        width: "1196px",
+        height: "200px",
+        width: "350px",
         backgroundImage: `url('${image.src}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
-      className="hidden md:flex w-full max-w-[var(--max-width)] bg-cover bg-center bg-no-repeat flex-col items-start justify-center h-[var(--banner-height)] rounded-[10px] p-5 gap-4"
+      className="md:hidden w-full max-w-[var(--max-width)] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-center h-[var(--banner-height)] rounded-[10px] p-5 gap-4"
     >
       <h1
-        className={`text-[64px] font-bold leading-[77.45px] w-1/2 ${
+        className={`text-[20px] font-bold leading-[24.2px] w-3/4 ${
           color === "white"
             ? "text-white"
             : color === "blue"
@@ -38,7 +38,7 @@ export default function Banner({
         {title}
       </h1>
       <p
-        className={`text-xs leading-[14.52px] w-1/2 ${
+        className={`text-[8px] leading-[9.68px] w-2/3 ${
           color === "white" ? "text-white" : "text-black"
         }`}
       >

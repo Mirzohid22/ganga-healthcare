@@ -6,7 +6,7 @@ import whatsapp from "../../public/whatsapp.png";
 export default function Footer() {
   return (
     <>
-      <footer className="w-full max-w-[var(--max-width)] min-h-[420px] bg-[#F7F7F7] rounded-[10px] p-[70px] grid lg:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-y-10 gap-x-8">
+      <footer className="w-[350px] md:w-full max-w-[var(--max-width)] min-h-[420px] bg-[#F7F7F7] rounded-[10px] p-[20px] md:p-[70px] grid lg:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-y-10 gap-x-8">
         <div className="flex flex-col items-start justify-start gap-7">
           <h3 className="font-bold text-[24px] leading-[29.05px]">
             Contact us
@@ -100,9 +100,9 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <div className="w-full max-w-[var(--max-width)] flex flex-col xs:flex-col md:flex-row justify-between items-center font-medium text-[15px] leading-[18.15px] text-[#858585] py-8 gap-2">
-        <p>© Company All Rights Reserved by Romi Agency</p>
-        <p>Terms & Conditions Legal Notice</p>
+      <div className="w-[350px] md:w-full max-w-[var(--max-width)] flex flex-col xs:flex-col md:flex-row justify-between items-center  text-[#858585] py-4 md:py-8  gap-2">
+        <p className="text-[12px] md:text-[15px] font-medium  leading-[14.52px] md:leading-[18.15px]">© Company All Rights Reserved by Romi Agency</p>
+        <p className="text-[12px] md:text-[15px] font-medium  leading-[14.52px] md:leading-[18.15px]">Terms & Conditions Legal Notice</p>
       </div>
     </>
   );

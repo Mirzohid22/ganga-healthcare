@@ -20,19 +20,19 @@ export default function Blog({
   }, []);
   return (
     <TransitionLink centered isButton href={`/news/${_id}`}>
-      <div className="w-[380px] h-[410px] flex flex-col items-start justify-between cursor-pointer overflow-hidden rounded-[10px] transition-transform duration-500">
-        <div className="w-[380px] h-[250px] overflow-hidden rounded-[10px]">
+      <div className="w-[350px] md:w-[380px] h-[355px] md:h-[410px] flex flex-col items-start justify-between cursor-pointer overflow-hidden rounded-[10px] transition-transform duration-500">
+        <div className="w-[350px] md:w-[380px] h-[250px] overflow-hidden rounded-[10px]">
           <img
             src={image}
             alt={title}
             className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:opacity-95"
           />
         </div>
-        <span className="font-normal text-[15px] leading-[18.15px] text-[#C0C0C0]">
+        <span className="font-normal text-[10px] md:text-[15px] leading-[12px] md:leading-[18.15px] text-[#C0C0C0]">
           {dateFormatter(createdAt)}
         </span>
-        <h3 className="font-bold text-[24px] leading-[29.05px]">{title}</h3>
-        <p className="font-normal text-[15px] leading-[18.15px]">
+        <h3 className="font-bold text-[20px] md:text-[24px] leading-[24.2px] md:leading-[29.05px]">{title}</h3>
+        <p className="font-normal text-[10px] md:text-[15px] leading-[12px] md:leading-[18.15px]">
           {description}
         </p>
       </div>

@@ -10,7 +10,7 @@ type MediaBannerProps = {
 export default function MediaBanner({ title, description }: MediaBannerProps) {
   return (
     <div
-      className="w-full max-w-[var(--max-width)] bg-[var(--common-blue)] flex items-end justify-center h-[530px] rounded-[20px] pl-12 gap-4"
+      className="w-full max-w-[var(--max-width)] bg-[var(--common-blue)] hidden md:flex items-end justify-center h-[530px] rounded-[20px] pl-12 gap-4"
     >
       <div className="flex flex-col items-start justify-center pb-12 gap-10">
         <h1 className="text-[64px] font-bold leading-[77.45px] w-[580px]">
