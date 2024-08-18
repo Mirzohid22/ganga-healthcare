@@ -6,7 +6,7 @@ const Members: React.FC<{
   members: MemberType[];
 }> = ({ members }: { members: MemberType[] }) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 p-4 md:hidden">
+    <div className="grid grid-cols-2 sm:grid-cols-2 gap-8 p-4 md:hidden">
       {members.map(({ _id, ...rest }) => (
         <div
           key={_id}
