@@ -160,7 +160,7 @@ export default function Page({
               <p>{product?.description}</p>
 
               <div className="flex flex-col items-start justify-center gap-5">
-                {product?.details.map((detail) => (
+                {product?.details?.map((detail) => (
                   <p key={detail.label}>
                     <b>{detail.label}:</b> {detail.value}
                   </p>
@@ -215,7 +215,7 @@ export default function Page({
           Популярные препараты
         </h2>
         <div className="w-full max-w-[var(--max-width)] grid grid-cols-1 gap-1 gap-y-[90px] md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
+          {products?.map((product) => (
             <Product key={product._id} {...product} />
           ))}
         </div>
