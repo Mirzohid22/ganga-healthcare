@@ -157,7 +157,7 @@ export default function Home({
 
         <TransitionLink isButton href="/products" centered>
           <button
-            className="w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] leading-[19.36px] text-[#858585] mx-auto active:opacity-95 active:scale-95
+            className="w-[350px] md:w-[390px] h-[50px] rounded-[10px] bg-[#EBEBEB] font-medium text-[16px] mx-auto leading-[19.36px] text-[#858585] active:opacity-95 active:scale-95
           transition duration-400 ease-in-out"
           >
             Смотреть все сезонные препараты
@@ -192,7 +192,7 @@ export default function Home({
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
-      <div className="xs:hidden md:block">
+      <div className="hidden md:block">
         <section
           ref={scroller}
           className="max-w-[var(--max-width)] text-center xs:hidden md:block"
@@ -201,8 +201,8 @@ export default function Home({
         </section>
       </div>
 
-      <div className="xs:block md:hidden">
-        <section className="max-w-[var(--max-width)] text-center xs:block md:hidden">
+      <div className="block md:hidden">
+        <section className="max-w-[var(--max-width)] text-center block md:hidden">
           <Members members={members} />
         </section>
       </div>

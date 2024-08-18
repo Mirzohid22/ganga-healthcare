@@ -11,7 +11,7 @@ export default function Product({
 }: ProductType) {
   return (
     <div
-      className="h-[240px] md:h-[420px] w-[160px] md:w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-gray-100 "
+      className="h-[240px] md:h-[420px] w-[180px] md:w-[280px] flex flex-col justify-between items-center gap-2 rounded-[10px] p-6 hover:bg-gray-100 "
     >
       <div className="w-full h-[280px] transition-transform duration-300 ease-in-out hover:scale-105">
         <img
@@ -21,8 +21,8 @@ export default function Product({
         />
       </div>
 
-      <div className="w-full flex flex-col items-center justify-start gap-2">
-        <h3 title={name} className="font-bold text-[20px] md:text-[24px] leading-[24.2px] md:leading-[29.05px]">
+      <div className="w-full flex flex-col items-center justify-start gap-1 md:gap-2">
+        <h3 title={name} className="font-bold text-[16px] md:text-[24px] leading-[24.2px] md:leading-[29.05px]">
           {name.length > 14 ? name.slice(0, 11) + "..." : name}
         </h3>
         <p className="font-medium text-[8px] md:text-[12px] leading-[9.68px] md:leading-[14.52px] text-[#C1C1C1]">
