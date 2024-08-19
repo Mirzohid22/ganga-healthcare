@@ -18,13 +18,13 @@ export default function MiniMediaBanner({ title, description }: MiniMediaBannerP
         backgroundRepeat: "clip",
         
     }}
-      className="w-[350px] max-w-[var(--max-width)] bg-[var(--common-blue)] flex md:hidden items-end justify-center h-[200px] rounded-[20px] gap-1 p-3 mx-auto"
+      className="w-[350px] sm:w-[500px] max-w-[var(--max-width)] bg-[var(--common-blue)] flex md:hidden items-end justify-center h-[200px] sm:h-[300px] rounded-[20px] gap-1 p-3 mx-auto"
     >
       <div className="flex flex-col items-start justify-center pb-8 gap-4">
-        <h1 className="text-[20px] font-bold leading-[24.2px]">
+        <h1 className="text-[20px] sm:tetx-[24px] font-bold leading-[24.2px] sm:leading-[28px]">
           {title}
         </h1>
-        <p className="text-[8px] leading-[9.68px]">{description}</p>
+        <p className="text-[8px] sm:text-[12px] leading-[9.68px] sm:leading-[14px]">{description}</p>
       </div>
     </div>
   );
