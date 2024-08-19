@@ -5,7 +5,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
+import MiniBanner from "@/components/common/MiniBanner";
 import Carousel from "@/components/Carousel";
+import Members from "@/components/Members";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
 import { type Member } from "@/types";
@@ -29,18 +31,24 @@ export default function Company({ members }: { members: Member[] }) {
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
+      <MiniBanner
+        image={bannerCompany}
+        color="black"
+        title={t("Welcome.title")}
+        description={t("Welcome.description")}
+      />
 
-      <section className="w-full max-w-[var(--max-width)] flex items-start justify-between my-10">
+      <section className="w-full max-w-[var(--max-width)] flex lg:flex-row flex-col lg:items-start items-center justify-between gap-4 my-10">
         <Image
           src={mediaFuttor}
           alt="media futtor"
           layout="responsive"
-          width={539}
-          height={632}
-          className="rounded-[10px] max-w-[539px] max-h-[632px] object-cover"
+          // width={539}
+          // height={632}
+          className="rounded-[10px] max-w-[539px] w-[350px] sm-[500px]  max-h-[632px] object-cover"
         />
-        <article className="w-[620px] flex flex-col items-start justify-start gap-6 text-justify">
-          <h2 className="font-bold text-[32px] leading-[38.73px]">
+        <article className="lg:w-[620px] max-w-[620px] p-3 w-9/10 flex flex-col items-start justify-start gap-6 text-justify">
+          <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
             {t("Company.articleTitle")}
           </h2>
           <p className="font-normal text-[16px] leading-[19.36px]">
@@ -87,16 +95,27 @@ export default function Company({ members }: { members: Member[] }) {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-        className="w-full rounded-[10px] max-w-[var(--max-width)]"
+        className="lg:w-full w-[350px] sm:w-[500px] md:w-9/10 rounded-[10px] max-w-[var(--max-width)]"
       ></iframe>
 
-      <h2 className="font-bold text-[32px] leading-[38.73px] mx-auto max-w-[548px] text-center mt-20 mb-6">
+      <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
-      <section ref={scroller} className="max-w-[var(--max-width)] text-center">
-        <Carousel scroller={scroller} members={members} />
-      </section>
+      <div className="hidden lg:block">
+        <section
+          ref={scroller}
+          className="max-w-[var(--max-width)] text-center xs:hidden lg:block"
+        >
+          <Carousel scroller={scroller} members={members} />
+        </section>
+      </div>
+
+      <div className="block lg:hidden">
+        <section className="max-w-[var(--max-width)] text-center block lg:hidden">
+          <Members members={members} />
+        </section>
+      </div>
 
       <Form />
       <Footer />
@@ -121,5 +140,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
       members,
       // Will be passed to the page component as props
     },
+    revalidate: 60,
   };
 }
