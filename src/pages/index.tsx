@@ -63,7 +63,7 @@ export default function Home({
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
-      <div className="w-full max-w-[var(--max-width)] hidden md:flex items-center justify-between py-7 gap-7">
+      <div className="w-full max-w-[var(--max-width)] hidden md:flex md:flex-col lg:flex-row items-center justify-between py-7 gap-7">
         <Additional
           image={travrelax}
           key={1}
@@ -128,11 +128,11 @@ export default function Home({
         />
       </div>
 
-      <section className="mx-auto w-[350px] md:w-full max-w-[var(--max-width)] flex flex-col items-start justify-center gap-[60px] my-8 md:my-44">
-        <h2 className="font-bold text-[20px] mx-auto md:mx-0 md:text-[32px] leading-[24.2px] md:leading-[38.73px]">
+      <section className="mx-auto w-[350px] sm:w-[600px] md:w-full max-w-[var(--max-width)] flex flex-col items-start justify-center gap-[60px] my-8 md:my-44">
+        <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
           Популярные препараты
         </h2>
-        <div className="w-full max-w-[var(--max-width)] grid grid-cols-2 gap-1 gap-y-[90px] md:grid-cols-3 lg:grid-cols-4 mt-[60px]">
+        <div className="w-full max-w-[var(--max-width)] grid grid-cols-2 gap-1 lg:gap-y-[90px] gap-y-[20px] sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 mt-[60px]">
           {products.map((product) => (
             <Product key={product._id} {...product} />
           ))}
@@ -146,10 +146,10 @@ export default function Home({
             Смотреть все популярные препараты
           </button>
         </TransitionLink>
-        <h2 className="font-bold text-[20px] md:text-[32px] leading-[24.2px] md:leading-[38.73px] mx-auto md:mx-0">
+        <h2 className="font-bold text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] mx-auto lg:mx-0">
           Сезонные препараты
         </h2>
-        <div className="w-full max-w-[var(--max-width)] grid grid-cols-2 gap-1 gap-y-[90px] md:grid-cols-3 lg:grid-cols-4 mt-[60px]">
+        <div className="w-full sm:w-[600px] md:w-full max-w-[var(--max-width)] grid grid-cols-2 sm:grid-cols-3 gap-1 md:gap-2 gap-y-[90px] md:grid-cols-3 lg:grid-cols-4 mt-[60px]">
           {products.slice(4).map((product) => (
             <Product key={product._id} {...product} />
           ))}
@@ -188,31 +188,31 @@ export default function Home({
         </div>
       </div>
 
-      <h2 className="font-bold w-2/3 text-[20px] md:text-[32px] leading-[24.2px] md:leading-[38.73px] mx-auto max-w-[548px] text-center mt-20 mb-6">
+      <h2 className="font-bold w-2/3 text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] mx-auto max-w-[548px] text-center mt-20 mb-6">
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <section
           ref={scroller}
-          className="max-w-[var(--max-width)] text-center xs:hidden md:block"
+          className="max-w-[var(--max-width)] text-center xs:hidden lg:block"
         >
           <Carousel scroller={scroller} members={members} />
         </section>
       </div>
 
-      <div className="block md:hidden">
-        <section className="max-w-[var(--max-width)] text-center block md:hidden">
+      <div className="block lg:hidden">
+        <section className="max-w-[var(--max-width)] text-center block lg:hidden">
           <Members members={members} />
         </section>
       </div>
       {/* blogs */}
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-4 md:my-44">
-        <h2 className="md:w-1/2 w-2/3 font-bold text-[20px] md:text-[32px] leading-[24.2px] md:leading-[38.73px] text-center mx-auto">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-4 lg:my-20">
+        <h2 className="lg:w-1/2 w-2/3 font-bold text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] text-center mx-auto">
           {t("Blogs.title")}
         </h2>
-        <div className="w-full max-w-[var(--max-width)] grid gap-[42px] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
+        <div className="w-full max-w-[var(--max-width)] grid gap-[42px] grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto">
           {blogs.map((blog) => (
             <Blog key={blog._id} {...blog} />
           ))}
@@ -265,5 +265,6 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       products,
       // Will be passed to the page component as props
     },
+    revalidate: 60
   };
 };

@@ -26,12 +26,12 @@ export default function MiniAdditional({
       style={{
         background: `var(--common-${variant})`,
       }}
-      className="w-[350px] md:w-[380px] h-[160px] md:h-[200px] flex items-center justify-between rounded-[10px] p-5 gap-4"
+      className="w-[350px] sm:w-[500px] md:w-[380px] h-[160px] sm:h-[200px] md:h-[200px] flex items-center justify-between rounded-[10px] p-5 gap-4"
     >
       <div className="flex flex-col items-start justify-between gap-4">
-        <h3 className="text-[20px] font-bold leading-[24.2px]">{title}</h3>
+        <h3 className="text-[20px] sm:tetx-[24px] font-bold leading-[24.2px] sm:leading-[32.6px]">{title}</h3>
         <p
-          className={`${justify === "end" && "text-[8px] md:text-xs leading-[9.68px] md:leading-[14.52px]"} ${
+          className={`${justify === "end" && "text-[8px] sm:text-[12px] md:text-xs leading-[9.68px] sm:leading-[14px] md:leading-[14.52px]"} ${
             justify === "between" && "font-bold text-2xl  leading-[29.05px]"
           }`}
         >
