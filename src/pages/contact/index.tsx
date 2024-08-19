@@ -20,10 +20,10 @@ export default function Contact() {
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d750.0377541041092!2d69.21392456853991!3d41.24026825644535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6104fd9deefb%3A0x28b5d57d6e445992!2sSoftware%20Systems!5e0!3m2!1sen!2s!4v1642659644805!5m2!1sen!2s"
         // src={translations.map.src}
         style={{ border: 0 }}
-        className="max-w-[var(--max-width)] max-h-[530px] sm:min-w-[400px] max-sm:min-w-[300px] w-full aspect-[2/1] sm:rounded-[20px] max-sm:w-full outline-none ring-0 border-none focus:ring-0 focus:outline-none focus:border-none"
+        className="max-w-[var(--max-width)] max-h-[530px] sm:min-w-[400px] max-sm:min-w-[300px] sm:-9/10 md:w-full aspect-[2/1] rounded-[20px] max-sm:w-full outline-none ring-0 border-none focus:ring-0 focus:outline-none focus:border-none"
         allowFullScreen={true}
       ></iframe>
-      <div className="w-full max-w-[var(--max-width)] flex items-center justify-between py-7 gap-7">
+      <div className="w-full max-w-[var(--max-width)] flex md:flex-row flex-col items-center justify-between py-7 gap-7">
         <AdditionalContact
           key={1}
           justify="between"
