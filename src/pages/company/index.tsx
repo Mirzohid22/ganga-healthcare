@@ -40,14 +40,14 @@ export default function Company({ members }: { members: Member[] }) {
 
       <section className="w-full max-w-[var(--max-width)] flex lg:flex-row flex-col lg:items-start items-center justify-between gap-4 my-10">
         <Image
+          className="rounded-[10px] lg:max-w-[539px] w-[350px] sm:w-[350px] md:w-[539px]  lg:max-h-[632px]"
           src={mediaFuttor}
           alt="media futtor"
           layout="responsive"
-          // width={539}
-          // height={632}
-          className="rounded-[10px] max-w-[539px] w-[350px] sm-[500px]  max-h-[632px] object-cover"
+          width={539}
+          height={632}
         />
-        <article className="lg:w-[620px] max-w-[620px] p-3 w-9/10 flex flex-col items-start justify-start gap-6 text-justify">
+        <article className="lg:w-[620px] max-w-[620px] p-3 w-9/10 flex flex-col items-start justify-start gap-6 text-justify ">
           <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
             {t("Company.articleTitle")}
           </h2>
@@ -87,7 +87,7 @@ export default function Company({ members }: { members: Member[] }) {
       </section>
 
       <iframe
-        width="1196"
+        // width="1196"
         height="420"
         src="https://www.youtube-nocookie.com/embed/qgLkfqPYwkI?si=zBoxMm5CjfUz_Bvo"
         title="YouTube video player"
@@ -98,7 +98,7 @@ export default function Company({ members }: { members: Member[] }) {
         className="lg:w-full w-[350px] sm:w-[500px] md:w-9/10 rounded-[10px] max-w-[var(--max-width)]"
       ></iframe>
 
-      <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
+      <h2 className="font-bold text-[20px] text-center sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] my-10">
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
