@@ -12,6 +12,8 @@ import Footer from "@/components/Footer";
 import { type Blog as BlogType } from "@/types";
 
 import bannerImage from "../../../public/banner-news.png";
+import MiniBanner from "@/components/common/MiniBanner";
+import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +36,12 @@ export default function News({
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
-
+      <MiniBanner
+        image={bannerImage}
+        color="black"
+        title={t("Welcome.title")}
+        description={t("Welcome.description")}
+      />
       <section className="w-full max-w-[var(--max-width)] grid grid-cols-1 gap-7 gap-y-[90px] md:grid-cols-2 lg:grid-cols-3 mt-[60px]">
         {blogs.map((blog) => (
           <Blog key={blog._id} {...blog} />
@@ -47,9 +54,12 @@ export default function News({
         title={t("Media.title")}
         description={t("Media.description")}
       />
-
+      <MiniMediaBanner
+        title={t("Media.title")}
+        description={t("Media.description")}
+      />
       <Form />
-      
+
       <Footer />
     </main>
   );
@@ -82,5 +92,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
       meta,
       // Will be passed to the page component as props
     },
+    revalidate: 60,
   };
 }

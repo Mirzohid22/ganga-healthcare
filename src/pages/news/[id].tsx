@@ -71,16 +71,25 @@ export default function Page({
         </button>
         <TransitionLink isButton href="/news">
           <button
-            className="h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
+            className="hidden h-10 px-5 bg-[#EBEBEB] rounded-[10px] md:flex items-center justify-center active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
           >
             {"<- "}
             {blog?.title}
           </button>
+          <button
+            className="md:hidden h-10 px-5 bg-[#EBEBEB] rounded-[10px] flex items-center justify-center active:opacity-95 active:scale-95
+         transition duration-400 ease-in-out"
+          >
+            {"<- "}
+            {blog?.title && blog.title.length > 25
+              ? blog.title.slice(0, 25) + "..."
+              : blog?.title}
+          </button>
         </TransitionLink>
       </div>
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col gap-9 items-stretch justify-start">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col gap-9 items-stretch justify-start px-5 pb-20">
         {loading ? (
           // skeleton
           <div className="w-[539px] h-[383px] bg-[#EBEBEB] rounded-[10px]" />
@@ -94,14 +103,14 @@ export default function Page({
           />
         )}
         <div className="h-[383px] flex flex-col text-justify justify-start items-start gap-3">
-          <h1 className="font-bold text-[32px] leading-[38.73px]">
+          <h1 className="font-bold text-[24px] lg:text-[32px] leading-[28px] lg:leading-[38.73px]">
             {blog?.title}
           </h1>
           <p className="font-normal text-[15px] leading-[18.15px] text-[#C0C0C0]">
             {dateFormatter(blog?.createdAt as string)}
           </p>
           <div
-            className="w-full max-w-[var(--max-width)] flex flex-col gap-8"
+            className="w-full max-w-[var(--max-width)] flex flex-col gap-8 "
             dangerouslySetInnerHTML={{
               __html: blog?.content as string,
             }}
@@ -109,11 +118,11 @@ export default function Page({
         </div>
       </section>
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] md:my-44">
-        <h2 className="w-1/2 font-bold text-[32px] leading-[38.73px] text-center mx-auto">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-4 lg:my-20">
+        <h2 className="lg:w-1/2 w-2/3 font-bold text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] text-center mx-auto">
           {t("Blogs.title")}
         </h2>
-        <div className="w-full max-w-[var(--max-width)] grid gap-[42px] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
+        <div className="w-full max-w-[var(--max-width)] grid gap-[42px] grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto">
           {blogs.map((blog) => (
             <Blog key={blog._id} {...blog} />
           ))}
@@ -148,6 +157,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
       blogs,
       // Will be passed to the page component as props
     },
+    revalidate: 60,
   };
 }
 
