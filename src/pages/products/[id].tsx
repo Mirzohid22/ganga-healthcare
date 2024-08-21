@@ -14,6 +14,7 @@ import TransitionLink from "@/components/common/TransitionLink";
 import { type Product as ProductType, type ProductDetailed } from "@/types";
 import { type GetStaticPaths } from "next";
 import { useEffect, useState } from "react";
+import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -118,9 +119,9 @@ export default function Page({
     >
       <Navigation />
 
-      <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-2">
+      <div className="w-full max-w-[var(--max-width)] flex items-center justify-start gap-2 mx-auto">
         <button
-          className="w-[105px] h-10 bg-[#EBEBEB80] rounded-[10px] font-medium text-sm leading-[16.94px] text-center text-[#858585] active:opacity-95 active:scale-95
+          className="ml-5 w-[105px] h-10 bg-[#EBEBEB80] rounded-[10px] font-medium text-sm leading-[16.94px] text-center text-[#858585] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
         >
           Products
@@ -136,7 +137,7 @@ export default function Page({
         </TransitionLink>
       </div>
 
-      <section className="w-full max-w-[var(--max-width)] flex items-start justify-start gap-5">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col md:flex-row items-center justify-center md:items-start md:justify-start gap-5">
         {loading ? (
           <>
             <ProductImagesSkeleton />
@@ -144,10 +145,14 @@ export default function Page({
           </>
         ) : (
           <>
-            <ProductImages images={[product?.image, ...product?.images as string[]] as string[]} />
-            <div className="h-[480px] w-[500px] flex flex-col items-start justify-between text-base font-normal leading-[19.36px] text-justify">
-              <div className="flex flex-col items-start justify-start gap-1">
-                <h2 className="font-bold text-[32px] leading-[38.73px]">
+            <ProductImages
+              images={
+                [product?.image, ...(product?.images as string[])] as string[]
+              }
+            />
+            <div className="h-[480px] w-full px-5 md:px-1 md:w-[500px] flex flex-col items-start justify-between text-base font-normal leading-[19.36px] text-justify">
+              <div className="flex flex-col w-full items-center md:items-start justify-start gap-1">
+                <h2 className="font-bold text-[24px] lg:text-[32px] leading-[28px] lg:leading-[38.73px]">
                   {product?.name}
                 </h2>
                 <p className="font-medium text-[12px] leading-[14.52px] text-[#27BE5A]">
@@ -177,7 +182,7 @@ export default function Page({
                       inline: "end",
                     });
                   }}
-                  className="w-[220px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+                  className="w-[160px] md:w-[220px] h-[35px] md:h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
                 >
                   Заказать
@@ -189,7 +194,7 @@ export default function Page({
                   target="_blank"
                 >
                   <button
-                    className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+                    className="w-[160px] md:w-[220px] h-[35px] md:h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
                 transition duration-400 ease-in-out"
                   >
                     Найти в аптеках
@@ -205,16 +210,15 @@ export default function Page({
         <DescriptionSkeleton />
       ) : (
         <section
-          className="w-full max-w-[var(--max-width)] flex flex-col gap-8"
-  
+          className="w-full max-w-[var(--max-width)] flex flex-col gap-8 px-5 md:px-1"
           dangerouslySetInnerHTML={{ __html: product?.content as string }}
         ></section>
       )}
       <section className="w-full max-w-[var(--max-width)] flex flex-col items-start justify-center gap-10 py-20">
-        <h2 className="font-bold text-[32px] leading-[38.73px]">
+        <h2 className="font-bold w-2/3 text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] mx-auto max-w-[548px] text-center mt-20 mb-6">
           Популярные препараты
         </h2>
-        <div className="w-full max-w-[var(--max-width)] grid grid-cols-1 gap-1 gap-y-[90px] md:grid-cols-2 lg:grid-cols-4">
+        <div className="w-full max-w-[var(--max-width)] grid grid-cols-2 gap-1 sm:grid-cols-3 gap-y-5 md:gap-y-[90px] md:grid-cols-3 lg:grid-cols-4">
           {products?.map((product) => (
             <Product key={product._id} {...product} />
           ))}
@@ -225,7 +229,10 @@ export default function Page({
         title={t("Media.title")}
         description={t("Media.description")}
       />
-
+      <MiniMediaBanner
+        title={t("Media.title")}
+        description={t("Media.description")}
+      />
       <Form />
 
       <Footer />
@@ -254,6 +261,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
       products,
       // Will be passed to the page component as props
     },
+    revalidate: 60,
   };
 }
 

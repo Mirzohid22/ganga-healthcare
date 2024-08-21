@@ -6,6 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
+import MiniBanner from "@/components/common/MiniBanner";
 import Group from "@/components/common/Group";
 import Product from "@/components/common/Product";
 import SkeletonProduct from "@/components/common/SkeletonProduct";
@@ -16,6 +17,7 @@ import Footer from "@/components/Footer";
 import { type Product as ProductType, type Group as GroupType } from "@/types";
 import bannerImage from "../../../public/banner-products.png";
 import useDebouncedState from "@/hooks/useDebouncedState";
+import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -88,8 +90,13 @@ export default function Products({ locale }: { locale: string }) {
         title={t("Welcome.title")}
         description={t("Welcome.description")}
       />
-
-      <section className="w-full max-w-[var(--max-width)] flex items-start justify-between gap-0 p-5">
+      <MiniBanner
+        image={bannerImage}
+        color="blue"
+        title={t("Welcome.title")}
+        description={t("Welcome.description")}
+      />
+      <section className="w-full max-w-[var(--max-width)] flex flex-col md:flex-row items-center md:items-start justify-start md:justify-between gap-0 p-5">
         <div className="w-[231px] h-auto flex flex-col gap-10">
           <h2 className="font-bold text-[24px leading-[29.05px]">Продукция</h2>
           {groups.map((group) => (
@@ -102,7 +109,7 @@ export default function Products({ locale }: { locale: string }) {
           ))}
 
           <button
-            className="w-[220px] h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-[#A4A4A4] text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+            className="w-[200px] md:w-[220px] h-[35px] md:h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-[#A4A4A4] text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px] active:opacity-95 active:scale-95 my-4
          transition duration-400 ease-in-out"
             onClick={() => {
               setSelectedTypes([]);
@@ -113,12 +120,12 @@ export default function Products({ locale }: { locale: string }) {
         </div>
 
         <div className="w-auto flex flex-col justify-start items-end">
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-0">
             <input
               id="search"
               type="text"
               placeholder="Search..."
-              className="w-[450px] h-[50px] rounded-[10px] bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
+              className="w-[310px] md:w-[450px] h-[35px] md:h-[50px] rounded-[10px] rounded-r-none bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
               onChange={(e) => {
                 setPage(1);
                 setSearchQuery(e.target.value);
@@ -129,14 +136,14 @@ export default function Products({ locale }: { locale: string }) {
               onClick={() => {
                 document?.getElementById("search")?.focus();
               }}
-              className="w-[126px] h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+              className="w-[80px] md:w-[126px] h-[35px] md:h-[50px] rounded-[10px] rounded-l-none bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
             >
               Search
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-7 gap-y-[90px] md:grid-cols-2 lg:grid-cols-3 pt-10 pl-10">
+          <div className="w-full mx-auto grid grid-cols-2 gap-7 lg:gap-y-[90px] md:grid-cols-2 lg:grid-cols-3 pt-5 md:pt-10 md:pl-10">
             {loading
               ? Array.from({ length: 12 }).map((_, i) => (
                   <SkeletonProduct key={i} />
@@ -162,6 +169,12 @@ export default function Products({ locale }: { locale: string }) {
         title={t("Media.title")}
         description={t("Media.description")}
       />
+
+      <MiniMediaBanner
+        title={t("Media.title")}
+        description={t("Media.description")}
+      />
+
       <Form />
       <Footer />
     </main>
