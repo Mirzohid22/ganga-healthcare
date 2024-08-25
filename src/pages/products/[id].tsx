@@ -172,7 +172,7 @@ export default function Page({
                 ))}
               </div>
 
-              <div className="flex gap-4">
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
                   // scrolls to the form
                   onClick={() => {
@@ -182,7 +182,7 @@ export default function Page({
                       inline: "end",
                     });
                   }}
-                  className="w-[160px] md:w-[220px] h-[35px] md:h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+                  className="w-full max-w-[400px] sm:w-[160px] md:w-[220px] h-[40px] md:h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
          transition duration-400 ease-in-out"
                 >
                   Заказать
@@ -192,9 +192,10 @@ export default function Page({
                   // link to telegram bot
                   href="https://t.me/osonaptekabot"
                   target="_blank"
+                  className="w-full max-w-[400px] sm:w-[160px] md:w-[220px] h-[40px] md:h-[50px]"
                 >
                   <button
-                    className="w-[160px] md:w-[220px] h-[35px] md:h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
+                    className="w-full max-w-[400px] sm:w-[160px] md:w-[220px] h-[40px] md:h-[50px] rounded-[10px] bg-[var(--secondary)] font-bold text-black text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
                 transition duration-400 ease-in-out"
                   >
                     Найти в аптеках

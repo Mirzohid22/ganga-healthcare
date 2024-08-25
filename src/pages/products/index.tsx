@@ -120,24 +120,22 @@ export default function Products({ locale }: { locale: string }) {
         </div>
 
         <div className="w-auto flex flex-col justify-start items-end">
-          <div className="flex items-center justify-end gap-0">
+          <div className="w-full flex items-center justify-end gap-0">
             <input
               id="search"
               type="text"
               placeholder="Search..."
-              className="w-[310px] md:w-[450px] h-[35px] md:h-[50px] rounded-[10px] rounded-r-none bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0"
+              className="w-full sm:w-[310px] md:w-[450px] h-[40px] md:h-[50px] bg-[#F7F7F7] font-normal text-black text-[14px] leading-[16.94px] px-5 border outline-none ring-0 rounded-[10px] sm:rounded-r-none"
               onChange={(e) => {
                 setPage(1);
                 setSearchQuery(e.target.value);
               }}
             />
             <button
-              // onClick set focus to the input
               onClick={() => {
                 document?.getElementById("search")?.focus();
               }}
-              className="w-[80px] md:w-[126px] h-[35px] md:h-[50px] rounded-[10px] rounded-l-none bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95
-         transition duration-400 ease-in-out"
+              className="hidden sm:block w-[80px] md:w-[126px] h-[40px] md:h-[50px] bg-[var(--primary)] font-bold text-white text-[16px] leading-[19.36px] active:opacity-95 active:scale-95 transition duration-400 ease-in-out rounded-[10px] rounded-l-none"
             >
               Search
             </button>

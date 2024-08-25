@@ -91,7 +91,6 @@ export default function Page({
 
       <section className="w-full max-w-[var(--max-width)] flex flex-col gap-9 items-stretch justify-start px-5 pb-20">
         {loading ? (
-          // skeleton
           <div className="w-[539px] h-[383px] bg-[#EBEBEB] rounded-[10px]" />
         ) : (
           <Image
@@ -102,7 +101,7 @@ export default function Page({
             className="xs:w-full md:w-9/10 lg:w-4/5 mx-auto object-cover rounded-[10px]"
           />
         )}
-        <div className="h-[383px] flex flex-col text-justify justify-start items-start gap-3">
+        <div className="min-h-[383px] flex flex-col text-justify justify-start items-start gap-3">
           <h1 className="font-bold text-[24px] lg:text-[32px] leading-[28px] lg:leading-[38.73px]">
             {blog?.title}
           </h1>
@@ -110,7 +109,8 @@ export default function Page({
             {dateFormatter(blog?.createdAt as string)}
           </p>
           <div
-            className="w-full max-w-[var(--max-width)] flex flex-col gap-8 "
+            className="w-full max-w-[var(--max-width)] flex flex-col gap-8"
+            style={{ marginBottom: "10px" }} // Adjust margin as needed
             dangerouslySetInnerHTML={{
               __html: blog?.content as string,
             }}
@@ -118,7 +118,7 @@ export default function Page({
         </div>
       </section>
 
-      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] my-4 lg:my-20">
+      <section className="w-full max-w-[var(--max-width)] flex flex-col items-center justify-center gap-[60px] lg:my-20">
         <h2 className="lg:w-1/2 w-2/3 font-bold text-[20px] sm:text-[24px] md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] text-center mx-auto">
           {t("Blogs.title")}
         </h2>
