@@ -39,16 +39,18 @@ export default function Company({ members }: { members: Member[] }) {
       />
 
       <section className="w-full max-w-[var(--max-width)] flex lg:flex-row flex-col lg:items-start items-center justify-between gap-4 my-10">
-        <Image
-          className="rounded-[10px] lg:max-w-[539px] w-[350px] sm:w-[350px] md:w-[539px]  lg:max-h-[632px]"
-          src={mediaFuttor}
-          alt="media futtor"
-          layout="responsive"
-          width={539}
-          height={632}
-        />
-        <article className="lg:w-[620px] max-w-[620px] p-3 w-9/10 flex flex-col items-start justify-start gap-6 text-justify ">
-          <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px]">
+        <div className="w-[350px] sm:w-[500px] md:w-1/2 lg:w-[539px]">
+          <Image
+            className="rounded-[10px] w-full  lg:max-h-[632px]"
+            src={mediaFuttor}
+            alt="media futtor"
+            layout="responsive"
+            width={539}
+            height={632}
+          />
+        </div>
+        <article className="lg:w-[620px] max-w-[620px] p-3 w-[350px] sm:w-[500px] md:w-1/2 flex flex-col items-start justify-start gap-6 text-justify ">
+          <h2 className="font-bold text-[20px] sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] text-center md:text-justify">
             {t("Company.articleTitle")}
           </h2>
           <p className="font-normal text-[16px] leading-[19.36px]">
@@ -56,26 +58,26 @@ export default function Company({ members }: { members: Member[] }) {
           </p>
           <div className="w-full h-[130px] flex items-center justify-evenly  bg-[#F7F7F7] rounded-[10px]">
             <div className="flex flex-col items-center justify-center">
-              <h1 className="font-bold text-[40px] leading-[48.41px]">
+              <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsOneNumber")}
               </h1>
-              <p className="font-normal text-[16px] leading-[19.36px]">
+              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsOneTitle")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <h1 className="font-bold text-[40px] leading-[48.41px]">
+              <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsTwoNumber")}
               </h1>
-              <p className="font-normal text-[16px] leading-[19.36px]">
+              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsTwoTitle")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <h1 className="font-bold text-[40px] leading-[48.41px]">
+              <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsThreeNumber")}
               </h1>
-              <p className="font-normal text-[16px] leading-[19.36px]">
+              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsThreeTitle")}
               </p>
             </div>
@@ -98,7 +100,7 @@ export default function Company({ members }: { members: Member[] }) {
         className="lg:w-full w-[350px] sm:w-[500px] md:w-9/10 rounded-[10px] max-w-[var(--max-width)]"
       ></iframe>
 
-      <h2 className="font-bold text-[20px] text-center sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] my-10">
+      <h2 className="w-9/10 md:w-1/2 font-bold text-[20px] text-center sm:text-[24px] mx-auto md:mx-auto lg:mx-0 md:text-[32px] leading-[24.2px] sm:leading-[28px] md:leading-[38.73px] my-10">
         The Skilled Professionals Making A Difference At Mavis Clinic
       </h2>
 
