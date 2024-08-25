@@ -61,7 +61,7 @@ export default function Company({ members }: { members: Member[] }) {
               <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsOneNumber")}
               </h1>
-              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
+              <p className="text-center font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsOneTitle")}
               </p>
             </div>
@@ -69,7 +69,7 @@ export default function Company({ members }: { members: Member[] }) {
               <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsTwoNumber")}
               </h1>
-              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
+              <p className="text-center font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsTwoTitle")}
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function Company({ members }: { members: Member[] }) {
               <h1 className="font-bold text-[20px] lg:text-[40px] leading-[24px] lg:leading-[48.41px]">
                 {t("Company.statisticsThreeNumber")}
               </h1>
-              <p className="font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
+              <p className="text-center font-normal text-[14px] md:text-[16px] leading-[16px] md:leading-[19.36px]">
                 {t("Company.statisticsThreeTitle")}
               </p>
             </div>
