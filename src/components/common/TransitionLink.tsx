@@ -3,14 +3,6 @@ import Link, { type LinkProps } from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const Spinner: React.FC = () => {
-  return (
-    <div className="fixed top-[50vh] left-[50vw] transform z-50">
-      <div className="w-20 h-20 border-[10px] border-gray-300 border-t-black rounded-full animate-spin"></div>
-    </div>
-  );
-};
-
 interface TransitionLinkProps extends LinkProps {
   isButton?: boolean;
   children: React.ReactNode;
@@ -31,6 +23,11 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
 }) => {
   const router = useRouter();
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleTransition = async (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -43,6 +40,8 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
   };
 
   useEffect(() => {
+    if (!isMounted) return;
+
     const handleRouteChangeComplete = async () => {
       await sleep(450); // Post-transition animation duration
       setIsTransitioning(false);
@@ -53,9 +52,11 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
     return () => {
       router.events.off("routeChangeComplete", handleRouteChangeComplete);
     };
-  }, [router]);
+  }, [router, isMounted]);
 
   useEffect(() => {
+    if (!isMounted) return;
+
     const body = document.querySelector("body");
 
     if (isTransitioning) {
@@ -64,7 +65,7 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
       body?.classList.add("smooth");
       body?.classList.add("duration-700");
       body?.classList.add("pt-10");
-      // create a container to overlay the page
+
       const overlay = document.createElement("div");
       overlay.setAttribute("id", "overlay");
       overlay.classList.add(
@@ -75,10 +76,10 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
         "h-full",
         "bg-black",
         "opacity-50",
-        "z-40",
+        "z-40"
       );
       body?.appendChild(overlay);
-      // add SPinner to body
+
       const spinner = document.createElement("div");
       spinner.setAttribute("id", "spinner");
 
@@ -94,19 +95,16 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
       spinner.innerHTML = `<div class="w-20 h-20 border-[10px] border-gray-300 border-t-black rounded-full animate-spin"></div>`;
       body?.appendChild(spinner);
     } else {
-      // remove Spinner from body
       const spinner = document.getElementById("spinner");
       spinner?.remove();
-      // remove Overlay from body
       const overlay = document.getElementById("overlay");
       overlay?.remove();
-      body?.classList.remove("pt-10")
+      body?.classList.remove("pt-10");
     }
-  }, [isTransitioning]);
+  }, [isTransitioning, isMounted]);
 
   return (
     <>
-      {/* {isTransitioning && <Spinner />} Add Spinner here */}
       {isButton ? (
         <Link
           className={`${centered ? "mx-auto" : ""}`}
