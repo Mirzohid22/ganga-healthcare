@@ -1,6 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { type Blog } from "@/types";
-import TransitionLink from "./TransitionLink";
+import dynamic from "next/dynamic";
+
+const TransitionLink = dynamic(
+  () => import("@/components/common/TransitionLink"),
+  {
+    ssr: false,
+  }
+);
 
 const dateFormatter = (date: string) => {
   const newDate = new Date(date);

@@ -1,6 +1,12 @@
-import TransitionLink from "./TransitionLink";
+import dynamic from "next/dynamic";
 import { type Product as ProductType } from "@/types";
 
+const TransitionLink = dynamic(
+  () => import("@/components/common/TransitionLink"),
+  {
+    ssr: false,
+  }
+);
 /* eslint-disable @next/next/no-img-element */
 export default function Product({
   _id,
@@ -33,9 +39,7 @@ export default function Product({
 
       <div className="w-full flex flex-col items-center justify-start gap-2">
         <TransitionLink isButton href={`/products/${_id}`}>
-          <button
-            className="w-[128px] md:w-[160px] lg:w-[220px] h-[34px] md:h-[40px] lg:h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[14px] lg:text-[16px] leading-[16.94px] md:leading-[19.36px] active:opacity-95 active:scale-95 transition-transform duration-400 ease-in-out"
-          >
+          <button className="w-[128px] md:w-[160px] lg:w-[220px] h-[34px] md:h-[40px] lg:h-[50px] rounded-[10px] bg-[var(--primary)] font-bold text-white text-[14px] lg:text-[16px] leading-[16.94px] md:leading-[19.36px] active:opacity-95 active:scale-95 transition-transform duration-400 ease-in-out">
             Заказать
           </button>
         </TransitionLink>

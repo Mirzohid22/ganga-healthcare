@@ -1,4 +1,5 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -6,7 +7,6 @@ import { useTranslation } from "next-i18next";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import MiniBanner from "@/components/common/MiniBanner";
-import Carousel from "@/components/Carousel";
 import Members from "@/components/Members";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
@@ -16,6 +16,9 @@ import mediaFuttor from "../../../public/company-futtor.png";
 import bannerCompany from "../../../public/banner-company.png";
 
 const inter = Inter({ subsets: ["latin"] });
+const Carousel = dynamic(() => import("@/components/Carousel"), {
+  ssr: false,
+});
 
 export default function Company({ members }: { members: Member[] }) {
   const { t } = useTranslation("common");

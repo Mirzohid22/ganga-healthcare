@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
-import Blog from "@/components/common/Blog";
 // import Pagination from "@/components/Pagination";
 import MediaBanner from "@/components/common/MediaBanner";
 import Form from "@/components/Form";
@@ -16,6 +16,9 @@ import MiniBanner from "@/components/common/MiniBanner";
 import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
+const Blog = dynamic(() => import("@/components/common/Blog"), {
+  ssr: false,
+});
 
 export default function News({
   blogs,

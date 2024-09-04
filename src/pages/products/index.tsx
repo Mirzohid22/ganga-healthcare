@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -8,7 +8,6 @@ import Navigation from "@/components/Navigation";
 import Banner from "@/components/common/Banner";
 import MiniBanner from "@/components/common/MiniBanner";
 import Group from "@/components/common/Group";
-import Product from "@/components/common/Product";
 import SkeletonProduct from "@/components/common/SkeletonProduct";
 import Pagination from "@/components/Pagination";
 import MediaBanner from "@/components/common/MediaBanner";
@@ -20,6 +19,9 @@ import useDebouncedState from "@/hooks/useDebouncedState";
 import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 
 const inter = Inter({ subsets: ["latin"] });
+const Product = dynamic(() => import("@/components/common/Product"), {
+  ssr: false,
+});
 
 export default function Products({ locale }: { locale: string }) {
   const { t } = useTranslation("common");
