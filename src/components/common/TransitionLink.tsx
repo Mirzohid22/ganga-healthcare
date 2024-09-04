@@ -24,7 +24,7 @@ const TransitionLink: React.FC<TransitionLinkProps> = ({
   const router = useRouter();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);

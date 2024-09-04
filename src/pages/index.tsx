@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { Inter } from "next/font/google";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -11,7 +12,6 @@ import Product from "@/components/common/Product";
 import MediaBanner from "@/components/common/MediaBanner";
 import MiniMediaBanner from "@/components/common/MiniMediaBanner";
 import MediaAdditional from "@/components/common/MediaAdditional";
-import TransitionLink from "@/components/common/TransitionLink";
 import Carousel from "@/components/Carousel";
 import Members from "@/components/Members";
 import Blog from "@/components/common/Blog";
@@ -32,6 +32,9 @@ import {
 } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
+const TransitionLink = dynamic(() => import("@/components/common/TransitionLink"), {
+  ssr: false,
+});
 
 export default function Home({
   members,
@@ -265,6 +268,6 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       products,
       // Will be passed to the page component as props
     },
-    revalidate: 60
+    revalidate: 1
   };
 };
